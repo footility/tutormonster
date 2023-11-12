@@ -1,21 +1,44 @@
-Script TRITALARAVEL
-Ho sviluppato uno script automatico, “TritaLaravel” versione beta, per migliorare l’analisi degli esercizi di Laravel.
-Questo ha rallentato un pò la gestione delle valutazioni ma ci tengo a precisare che non ha influenzato la gestione del lavoro pomeridiano da tutor!
-Mi ero ripromesso da tempo di farlo per ottimizzare il lavoro pomeridiano e migliorare il feedback.
+# TutorMonster - Strumenti di Automazione per Tutor
 
-Cosa fa in linea generale:
-Scarica la repo dello studente
-Riconfigura .env per poter cerare un db con il pattern [utente]_[esercizio]
-installa npm
-installa laravel (composer)
-poi effettua: generazione chiave, migrazione, seed, storage link.
-innietta un utente con una query diretta sulla tabella user
-esegue in background vite e
+## Introduzione
+TutorMonster è una suite di strumenti di automazione progettati per assistere i tutor nel processo di valutazione degli studenti. Questa suite contiene vari script, il primo dei quali è "TritaLaravel", mirato a ottimizzare e migliorare il feedback sugli esercizi di Laravel.
 
-Problemi noti dello script:
-Rimozione della repo scaricata: Il log impedisce la completa cancellazione delle directory con rm -rf, probabilmente per un problema di lock dei file durante la rimozione.
-Esecuzione del seeder: Ci sono stati problemi frequenti, forse legati ai seeder degli studenti o a permessi di scrittura sul mio mac, magari proprio causati dal fatto che sto eseguendo uno script con shell_exec.
-!Non so che problemi può creare su WINDOWS! :joy:
+## Script TRITALARAVEL
 
-Ovviamente è necessario migliorarlo, l’ho fatto a best effort!
-A domani!
+### Descrizione
+"TritaLaravel" è uno script automatizzato, attualmente in versione beta, sviluppato per semplificare e velocizzare l'analisi degli esercizi di Laravel. Questo strumento è stato creato per rendere più efficiente il lavoro dei tutor a supporto della loro routine pomeridiana.
+
+### Funzionalità
+- **Download delle Repository**: Scarica automaticamente la repo degli studenti.
+- **Configurazione Ambiente**: Riconfigura il file `.env` per creare un database con il pattern `[utente]_[esercizio]`.
+- **Installazioni e Setup Laravel**: Esegue l'installazione di npm e Laravel (tramite Composer), oltre a vari comandi Laravel come la generazione di chiavi, le migrazioni, il seeding e la creazione di link allo storage.
+- **Creazione Utente per Test**: Inserisce un utente di test nel database tramite una query diretta.
+- **Esecuzione in Background**: Avvia in background i server Vite e Artisan.
+- **Apertura Browser per Valutazione**: Apre Chrome alla porta di default di Artisan per la valutazione manuale.
+- **Pulizia**: Dopo la valutazione, termina i processi, elimina il database e rimuove i file scaricati.
+
+### Modalità di Uso
+- **Selezione Studente**: Scegli uno studente specifico da analizzare.
+- **Analisi della Prima o della seconda metà della classe**: Analizza automaticamente tutti gli studenti nella prima metà della lista.
+- **Analisi Continua**: Inizia l'analisi da uno studente specifico e procedi con gli altri.
+
+### Installazione
+Per utilizzare lo script, assicurati di avere:
+- PHP compatibile con la versione di Laravel degli studenti.
+- MySQL per la gestione del database.
+- Composer per l'installazione di Laravel.
+- npm (Node) per l'installazione e l'esecuzione di Vite.
+
+### Utilizzo
+Per utilizzare lo script:
+- Modifica il codice per aggiornare la lista degli studenti e l'esercizio corrente.
+- Esegui con `php laravelscript.php`.
+- Se utilizzi diverse versioni di PHP, imposta il percorso corretto nel codice.
+
+### Problemi Noti
+- **Rimozione delle Repo Scaricate**: Problemi nel rimuovere completamente le directory scaricate a causa di file log bloccati.
+- **Esecuzione del Seeder**: Inconsistenze nell'esecuzione dei seeder, potenzialmente legate ai permessi di scrittura o alla struttura dei seeder degli studenti.
+- **Compatibilità con Windows**: Non testato su Windows, potrebbero sorgere problemi specifici di sistema operativo.
+
+### Contributi
+Sei invitato a contribuire allo sviluppo di questo strumento. Ogni suggerimento o miglioramento è ben accetto!
