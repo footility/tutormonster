@@ -1,7 +1,7 @@
 <?php
 
 //config
-$repos_dir = "tritalaravel";
+$repos_dir = "tritalaravel"; //se cambiata da mettere in .gitignore
 $repo_name = "laravel-one-to-many";
 //fine config
 
@@ -169,7 +169,7 @@ while (true) {
         echo "/usr/local/bin/php artisan storage:link \n";
         run("/usr/local/bin/php artisan storage:link");
 
-        echo "Creazione utente di test paolo@mistre.it 12345678\n";
+        echo "Creazione utente di test user:tritalaravel@boolean.it pass:tritalaravel\n";
         $email = 'tritalaravel@boolean.it';
         $password = password_hash('tritalaravel', PASSWORD_DEFAULT); // Hash della password
         $emailVerifiedAt = date('Y-m-d H:i:s'); // Timestamp corrente per email verificata
