@@ -1,4 +1,10 @@
 <?php
+
+//config
+$repos_dir = "tritalaravel";
+$repo_name = "laravel-one-to-many";
+//fine config
+
 echo "*** Inizio verifica compiti ***\n";
 
 // lista degli utenti da controllare
@@ -47,9 +53,6 @@ $halfPoint = ceil($userCount / 2);
 
 
 echo "Studenti $userCount\n";
-$repo_name = "laravel-auth";
-$repos_dir = "repos";
-
 
 if (!file_exists($repos_dir)) {
     echo "Creazione directory delle reopository necessaria\n";
@@ -167,8 +170,8 @@ while (true) {
         run("/usr/local/bin/php artisan storage:link");
 
         echo "Creazione utente di test paolo@mistre.it 12345678\n";
-        $email = 'paolo@mistre.it';
-        $password = password_hash('12345678', PASSWORD_DEFAULT); // Hash della password
+        $email = 'tritalaravel@boolean.it';
+        $password = password_hash('tritalaravel', PASSWORD_DEFAULT); // Hash della password
         $emailVerifiedAt = date('Y-m-d H:i:s'); // Timestamp corrente per email verificata
 
         $query = "INSERT INTO 
