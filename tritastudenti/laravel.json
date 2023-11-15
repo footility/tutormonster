@@ -1,0 +1,367 @@
+[
+  {
+    "title": "laravel intro",
+    "faqs": [
+      {
+        "question": "Laravel è un linguaggio di programmazione?",
+        "answer": "No, Laravel non è un linguaggio di programmazione. È un framework PHP per lo sviluppo di applicazioni web."
+      },
+      {
+        "question": "Perché è consigliabile usare un framework come Laravel invece di partire da zero?",
+        "answer": "È meglio affidarsi a un framework come Laravel perché fornisce una struttura e delle funzionalità predefinite, evitando di dover ricreare da zero soluzioni che altri hanno già sviluppato in modo più efficiente."
+      },
+      {
+        "question": "In che casi è preferibile usare Laravel rispetto al PHP puro?",
+        "answer": "Laravel è preferibile per progetti mediamente complessi che richiedono una serie di funzionalità già implementate nel framework, risparmiando tempo e sforzo nello sviluppo."
+      },
+      {
+        "question": "Come implementa Laravel il pattern MVC (Model-View-Controller)?",
+        "answer": "Laravel segue il pattern MVC separando la logica di business (Model), la logica di presentazione (View) e la logica dell'applicazione (Controller), facilitando così lo sviluppo e la manutenzione dell'applicazione."
+      },
+      {
+        "question": "Quali sono le principali cartelle in un progetto Laravel e a cosa servono?",
+        "answer": "Le principali cartelle in un progetto Laravel includono 'app' per la logica delle applicazioni, 'database' per le definizioni delle tabelle del database, 'resources' per la grafica delle pagine, e 'routes' per la dichiarazione degli URL dell'applicazione."
+      },
+      {
+        "question": "Qual è il ruolo di Composer in un progetto Laravel?",
+        "answer": "Composer è un gestore di dipendenze che gestisce le librerie PHP necessarie per il funzionamento di un'applicazione Laravel, facilitando l'aggiunta e la gestione di tali librerie."
+      },
+      {
+        "question": "Come si avvia un server di sviluppo locale in Laravel?",
+        "answer": "In Laravel, si può avviare un server di sviluppo locale utilizzando il comando `php artisan serve`, che avvia un piccolo server locale e rende l'applicazione accessibile tramite un URL specifico."
+      }
+    ]
+  },
+  {
+    "title": "Laravel 10 Composer Installation",
+    "faqs": [
+      {
+        "question": "Che cos'è Composer nel contesto di Laravel?",
+        "answer": "Composer è uno strumento per la gestione delle dipendenze in PHP, usato per gestire le librerie di cui un progetto Laravel necessita."
+      },
+      {
+        "question": "Come si installa Laravel tramite Composer?",
+        "answer": "Laravel può essere installato tramite Composer utilizzando il comando `composer create-project --prefer-dist laravel/laravel nomeProgetto`."
+      },
+      {
+        "question": "È possibile specificare una versione particolare di Laravel durante l'installazione con Composer?",
+        "answer": "Sì, è possibile specificare una versione particolare di Laravel aggiungendo il numero di versione nel comando di installazione, come `laravel/laravel:^8.0` per la versione 8."
+      },
+      {
+        "question": "Quali sono i requisiti di sistema per installare Laravel tramite Composer?",
+        "answer": "I requisiti di sistema per installare Laravel includono PHP nella versione specificata dalla versione di Laravel, oltre ad altre dipendenze come OpenSSL, PDO, Mbstring, Tokenizer, XML e Ctype."
+      }
+    ]
+  },
+  {
+    "title": "Laravel 10 Blade Intro",
+    "faqs": [
+      {
+        "question": "Che cos'è Blade in Laravel?",
+        "answer": "Blade è il motore di templating di Laravel, che offre una sintassi semplice ed elegante per la creazione di layout e la gestione dei dati."
+      },
+      {
+        "question": "Come si crea una vista in Blade?",
+        "answer": "Una vista in Blade può essere creata creando un file con estensione `.blade.php` nella cartella 'resources/views' del progetto Laravel."
+      },
+      {
+        "question": "Blade supporta l'ereditarietà dei template?",
+        "answer": "Sì, Blade supporta l'ereditarietà dei template attraverso direttive come `@extends` e `@section`."
+      },
+      {
+        "question": "Come si passano i dati a una vista Blade?",
+        "answer": "I dati possono essere passati a una vista Blade tramite il controller, utilizzando il metodo `view('nomeVista', ['dato' => $valore])`."
+      }
+    ]
+  },
+  {
+    "title": "Laravel Blade Layout",
+    "faqs": [
+      {
+        "question": "Come si definisce un layout di base in Blade?",
+        "answer": "Un layout di base in Blade può essere definito utilizzando la direttiva `@yield` per indicare le sezioni che saranno sovrascritte dai template figli."
+      },
+      {
+        "question": "Cosa sono le direttive `@section` e `@endsection` in Blade?",
+        "answer": "Le direttive `@section` e `@endsection` sono usate in Blade per definire contenuti che possono essere inseriti in un layout di base."
+      },
+      {
+        "question": "È possibile includere file esterni in un template Blade?",
+        "answer": "Sì, è possibile includere file esterni in un template Blade usando la direttiva `@include`."
+      },
+      {
+        "question": "Come si gestisce la condizionale e i cicli in Blade?",
+        "answer": "Blade permette di gestire condizionali e cicli utilizzando direttive come `@if`, `@foreach`, `@while`, ecc."
+      }
+    ]
+  },
+  {
+    "title": "Laravel 10 Model Controller",
+    "faqs": [
+      {
+        "question": "Che relazione c'è tra Model e Controller in Laravel?",
+        "answer": "In Laravel, il Model gestisce la logica e i dati dell'applicazione, mentre il Controller gestisce le interazioni utente e passa i dati al Model."
+      },
+      {
+        "question": "Come si crea un Model in Laravel?",
+        "answer": "Un Model in Laravel può essere creato usando il comando Artisan `php artisan make:model NomeModello`."
+      },
+      {
+        "question": "Qual è il ruolo dei Controller in Laravel?",
+        "answer": "I Controller in Laravel gestiscono la logica di business dell'applicazione, ricevendo input e invocando metodi sul Model."
+      },
+      {
+        "question": "Come si associa un Controller a una rotta in Laravel?",
+        "answer": "In Laravel, un Controller può essere associato a una rotta specificando il controller e il metodo da chiamare nel file delle rotte, come `Route::get('/percorso', 'NomeController@metodo')`."
+      }
+    ]
+  },
+  {
+    "title": "Laravel 10 Migrations",
+    "faqs": [
+      {
+        "question": "Cosa sono le migrations in Laravel?",
+        "answer": "Le migrations in Laravel sono una modalità per definire e modificare la struttura del database in modo versionato e collaborativo."
+      },
+      {
+        "question": "Come si crea una migration in Laravel?",
+        "answer": "Una migration può essere creata in Laravel usando il comando Artisan `php artisan make:migration nome_migration`."
+      },
+      {
+        "question": "È possibile eseguire rollback delle migrations?",
+        "answer": "Sì, Laravel permette di eseguire rollback delle migrations tramite il comando `php artisan migrate:rollback`."
+      },
+      {
+        "question": "Cosa si intende per 'migration up' e 'migration down' in Laravel?",
+        "answer": "In Laravel, 'migration up' si riferisce all'applicazione della migration per creare o modificare tabelle, mentre 'migration down' è l'operazione inversa, per annullare le modifiche apportate dalla migration."
+      }
+    ]
+  },
+  {
+    "title": "Laravel 10 Seeders",
+    "faqs": [
+      {
+        "question": "Che cosa sono i Seeders in Laravel?",
+        "answer": "I Seeders in Laravel sono classi PHP che permettono di popolare il database con dati di prova o iniziali."
+      },
+      {
+        "question": "Come si crea un Seeder in Laravel?",
+        "answer": "Un Seeder può essere creato in Laravel usando il comando Artisan `php artisan make:seeder NomeSeeder`."
+      },
+      {
+        "question": "Come si esegue un Seeder in Laravel?",
+        "answer": "I Seeders in Laravel possono essere eseguiti utilizzando il comando `php artisan db:seed`."
+      },
+      {
+        "question": "È possibile specificare quale Seeder eseguire in Laravel?",
+        "answer": "Sì, è possibile specificare un Seeder specifico da eseguire in Laravel usando l'opzione `--class=NomeSeeder` con il comando `php artisan db:seed`."
+      }
+    ]
+  },
+  {
+    "title": "Laravel 10 CRUD Operations: Index, Create, Store, Show",
+    "faqs": [
+      {
+        "question": "Che cosa significa CRUD in Laravel?",
+        "answer": "CRUD è l'acronimo di Create, Read, Update, Delete. Sono le quattro operazioni di base per la gestione dei dati in Laravel."
+      },
+      {
+        "question": "Come si implementa la funzione 'Index' in un controller CRUD in Laravel?",
+        "answer": "La funzione 'Index' in un controller CRUD Laravel è utilizzata per elencare tutte le entità di una specifica risorsa, solitamente attraverso una vista."
+      },
+      {
+        "question": "Qual è lo scopo del metodo 'Create' in Laravel?",
+        "answer": "Il metodo 'Create' in Laravel è utilizzato per mostrare un form per la creazione di una nuova entità."
+      },
+      {
+        "question": "Come funziona il metodo 'Store' in Laravel?",
+        "answer": "Il metodo 'Store' in Laravel gestisce la ricezione dei dati del form inviati dalla vista 'Create' e salva la nuova entità nel database."
+      },
+      {
+        "question": "Cosa fa il metodo 'Show' in un controller CRUD Laravel?",
+        "answer": "Il metodo 'Show' in un controller CRUD Laravel è usato per visualizzare i dettagli di una specifica entità."
+      }
+    ]
+  },
+  {
+    "title": "Laravel 10 CRUD Operations: File Storage",
+    "faqs": [
+      {
+        "question": "Come si configura il file storage in Laravel?",
+        "answer": "Si configura il file storage in Laravel modificando il file 'config/filesystems.php' e impostando il filesystem disk di default, ad esempio a 'public'."
+      },
+      {
+        "question": "Come si crea un symlink per la gestione dei file in Laravel?",
+        "answer": "Un symlink può essere creato in Laravel per collegare la cartella 'storage/app/public' alla cartella 'public' del progetto, utilizzando il comando Artisan `php artisan storage:link`."
+      },
+      {
+        "question": "Qual è il modo corretto di caricare un file in Laravel?",
+        "answer": "Per caricare un file in Laravel, si usa la funzione `Storage::put()` o `Storage::disk('nome').put()`, e si aggiunge l'attributo 'enctype' al form HTML."
+      },
+      {
+        "question": "Come si visualizza un file caricato in una view Laravel?",
+        "answer": "Per visualizzare un file caricato in una view Laravel, si può usare la funzione `asset()` insieme al percorso del file, sfruttando il symlink creato."
+      }
+    ]
+  },
+  {
+    "title": "Laravel 10 CRUD Operations: Edit, Update, Delete",
+    "faqs": [
+      {
+        "question": "Come funziona il metodo 'Edit' in un controller CRUD Laravel?",
+        "answer": "Il metodo 'Edit' in un controller CRUD Laravel fornisce una vista per modificare i dati di una specifica entità, caricando i dati esistenti in un form."
+      },
+      {
+        "question": "Qual è lo scopo del metodo 'Update' in Laravel?",
+        "answer": "Il metodo 'Update' in Laravel gestisce l'aggiornamento dei dati di una specifica entità nel database, ricevendo i dati dal form di modifica."
+      },
+      {
+        "question": "Come si implementa la funzione di 'Delete' in un controller CRUD Laravel?",
+        "answer": "La funzione 'Delete' in un controller CRUD Laravel permette di eliminare una specifica entità dal database, solitamente invocata tramite una richiesta HTTP DELETE."
+      }
+    ]
+  },
+  {
+    "title": "Laravel 10 Validation",
+    "faqs": [
+      {
+        "question": "Che cosa è la validazione in Laravel e perché è importante?",
+        "answer": "La validazione in Laravel è il processo di assicurarsi che i dati inseriti dagli utenti siano corretti e completi. È cruciale per la sicurezza e l'integrità dei dati dell'applicazione."
+      },
+      {
+        "question": "Come si implementa la validazione in un controller Laravel?",
+        "answer": "In Laravel, la validazione può essere implementata in un controller utilizzando il metodo `validate()` che controlla automaticamente i dati della richiesta rispetto a regole di validazione definite."
+      },
+      {
+        "question": "È possibile personalizzare i messaggi di errore di validazione?",
+        "answer": "Sì, in Laravel è possibile personalizzare i messaggi di errore di validazione passando un array di messaggi personalizzati al metodo `validate()`."
+      },
+      {
+        "question": "Cosa succede se la validazione in Laravel fallisce?",
+        "answer": "Se la validazione in Laravel fallisce, viene generata automaticamente un'eccezione `ValidationException`, che reindirizza l'utente alla pagina di origine con tutti gli errori di validazione."
+      }
+    ]
+  },
+  {
+    "title": "Laravel 10 Form Requests Validation",
+    "faqs": [
+      {
+        "question": "Cosa sono i 'Form Requests' in Laravel?",
+        "answer": "I 'Form Requests' in Laravel sono classi speciali che incapsulano la logica di validazione e autorizzazione delle richieste di un form."
+      },
+      {
+        "question": "Come si crea un 'Form Request' in Laravel?",
+        "answer": "Un 'Form Request' può essere creato in Laravel utilizzando il comando Artisan `php artisan make:request NomeFormRequest`."
+      },
+      {
+        "question": "Qual è la differenza tra la validazione in un Controller e in un Form Request?",
+        "answer": "La validazione in un Controller è diretta e immediata, mentre un Form Request separa la logica di validazione, rendendola riutilizzabile e più organizzata."
+      },
+      {
+        "question": "Come si applica un 'Form Request' a un Controller in Laravel?",
+        "answer": "Un 'Form Request' si applica a un Controller in Laravel passandolo come parametro al metodo del Controller, dove Laravel si occupa automaticamente della validazione e dell'autorizzazione."
+      }
+    ]
+  },
+  {
+    "title": "Git Flow",
+    "faqs": [
+      {
+        "question": "Cosa è Git Flow e perché è importante?",
+        "answer": "Git Flow è un modello di workflow per Git che definisce un insieme rigoroso di regole su come nominare e utilizzare i rami (branch) per una gestione efficiente dei progetti."
+      },
+      {
+        "question": "Quali sono i principali rami in Git Flow?",
+        "answer": "I rami principali in Git Flow includono 'main' (o 'master') per il codice in produzione, 'develop' per lo sviluppo continuo, e rami aggiuntivi come 'feature', 'release', e 'hotfix'."
+      },
+      {
+        "question": "Come si gestisce una nuova funzionalità in Git Flow?",
+        "answer": "Per una nuova funzionalità in Git Flow, si crea un nuovo ramo 'feature' dal ramo 'develop', e una volta completato, si unisce ('merge') di nuovo in 'develop'."
+      },
+      {
+        "question": "Come si gestisce una release in Git Flow?",
+        "answer": "In Git Flow, una release è gestita creando un ramo 'release' da 'develop', che dopo la fase di test e modifiche viene unito sia in 'main' che in 'develop'."
+      },
+      {
+        "question": "Cosa sono i 'hotfix' in Git Flow?",
+        "answer": "I 'hotfix' in Git Flow sono rami creati direttamente da 'main' per risolvere bug urgenti in produzione, e una volta completati, vengono uniti sia in 'main' che in 'develop'."
+      }
+    ]
+  },
+  {
+    "title": "Laravel 10 Authentication",
+    "faqs": [
+      {
+        "question": "Come funziona l'autenticazione in Laravel?",
+        "answer": "L'autenticazione in Laravel gestisce la verifica delle credenziali degli utenti, consentendo l'accesso solo agli utenti registrati. Laravel fornisce diversi modi per implementare l'autenticazione, compresi i driver predefiniti e la personalizzazione."
+      },
+      {
+        "question": "Come si implementa un sistema di login in Laravel?",
+        "answer": "Un sistema di login in Laravel può essere implementato utilizzando i pacchetti predefiniti come Laravel Breeze o Laravel Jetstream, che forniscono un sistema di autenticazione completo con viste, controller e rotte."
+      },
+      {
+        "question": "Cosa sono le sessioni e i cookie nell'ambito dell'autenticazione Laravel?",
+        "answer": "Nell'autenticazione Laravel, le sessioni vengono utilizzate per mantenere le informazioni di stato degli utenti autenticati sul server, mentre i cookie possono conservare identificatori di sessione o token sul client per riconoscere gli utenti nelle richieste successive."
+      },
+      {
+        "question": "Come si proteggono le password in Laravel?",
+        "answer": "In Laravel, le password vengono protette utilizzando funzioni di hashing, come bcrypt, che trasformano la password in una stringa hashata non invertibile, salvata poi nel database."
+      },
+      {
+        "question": "Cosa sono le 'password salate' e come vengono utilizzate in Laravel?",
+        "answer": "Le 'password salate' in Laravel si riferiscono all'aggiunta di un 'sale' casuale alla password prima dell'hashing. Questo aumenta la sicurezza rendendo più difficile l'uso di attacchi come rainbow tables per decifrare le password."
+      }
+    ]
+  },
+  {
+    "title": "Laravel 10 Relationships: One To One, One To Many",
+    "faqs": [
+      {
+        "question": "Come si implementa una relazione One To One in Laravel?",
+        "answer": "In Laravel, una relazione One To One si implementa definendo due modelli e utilizzando i metodi `hasOne()` e `belongsTo()`. Ad esempio, se un utente ha un solo profilo, il modello User avrà un metodo `userDetail()` che usa `hasOne(UserDetail::class)`."
+      },
+      {
+        "question": "Qual è la differenza tra `hasOne()` e `belongsTo()` in una relazione One To One?",
+        "answer": "`hasOne()` è usato nel modello principale per indicare la proprietà di un'altra entità, mentre `belongsTo()` è usato nel modello secondario per indicare la dipendenza dal modello principale."
+      },
+      {
+        "question": "Come si crea una relazione One To Many in Laravel?",
+        "answer": "Una relazione One To Many in Laravel si crea usando `hasMany()` nel modello principale e `belongsTo()` nel modello secondario. Ad esempio, un utente (User) che ha molti post (Post) userà `hasMany(Post::class)`."
+      },
+      {
+        "question": "In una relazione One To Many, come si definisce la chiave esterna e la chiave locale?",
+        "answer": "Nelle relazioni One To Many, si può specificare la chiave esterna e la chiave locale nei metodi di relazione, ad esempio, `hasMany(Post::class, 'user_id', 'id')`, dove 'user_id' è la chiave esterna nel modello Post e 'id' è la chiave locale nel modello User."
+      }
+    ]
+  },
+  {
+    "title": "Laravel 9 - Relazioni 2",
+    "faqs": [
+      {
+        "question": "Come si gestisce una relazione Many to Many in Laravel?",
+        "answer": "In Laravel, una relazione Many to Many si gestisce utilizzando la funzione `belongsToMany()` in entrambi i modelli coinvolti. Ad esempio, se gli utenti hanno molti ruoli e viceversa, sia il modello User che Role useranno `belongsToMany()`."
+      },
+      {
+        "question": "Come si implementa la tabella ponte (pivot) in una relazione Many to Many?",
+        "answer": "Per implementare una tabella ponte in una relazione Many to Many, è necessario creare una migration per la tabella che contiene gli ID dei record delle due tabelle relazionate."
+      },
+      {
+        "question": "Cosa fanno i metodi 'attach' e 'detach' in Laravel?",
+        "answer": "In Laravel, il metodo 'attach' viene usato per aggiungere record alla tabella pivot, creando una relazione tra due entità, mentre 'detach' rimuove la relazione tra le entità, cancellando i record dalla tabella pivot."
+      },
+      {
+        "question": "Come si usa il metodo 'sync' in una relazione Many to Many in Laravel?",
+        "answer": "Il metodo 'sync' in Laravel viene usato per aggiungere ed eliminare simultaneamente record nella tabella pivot, accettando un array di ID da inserire. Gli ID già presenti nella tabella pivot e non nell'array verranno rimossi."
+      }
+    ]
+  }
+
+
+
+
+
+
+
+
+]
+

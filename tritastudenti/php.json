@@ -1,0 +1,153 @@
+[
+  {
+    "title": "PHP 8 Intro",
+    "faqs": [
+      {
+        "question": "Quali sono le principali caratteristiche di PHP?",
+        "answer": "PHP è un linguaggio di scripting lato server, open source, molto utilizzato per lo sviluppo web. È facilmente integrabile con HTML e supporta vari database."
+      },
+      {
+        "question": "Come differisce PHP da JavaScript?",
+        "answer": "PHP è un linguaggio server-side, eseguito sul server prima che il contenuto venga inviato al client. JavaScript è principalmente un linguaggio client-side, eseguito nel browser dell'utente."
+      },
+      {
+        "question": "Come si scrive il codice PHP all'interno di un documento HTML?",
+        "answer": "Il codice PHP viene inserito all'interno di tag PHP '<?php ... ?>' in un documento HTML. Il server esegue il codice PHP e invia l'output HTML generato al browser."
+      },
+      {
+        "question": "Cosa si intende per 'scripting lato server' in PHP?",
+        "answer": "Lo scripting lato server in PHP significa che gli script PHP sono eseguiti sul server web e non sul computer dell'utente. Il server elabora gli script PHP e invia il risultato al browser."
+      },
+      {
+        "question": "Come si dichiarano e si utilizzano le variabili in PHP?",
+        "answer": "Le variabili in PHP vengono dichiarate con il prefisso '$', come '$variabile'. Sono case-sensitive e possono contenere lettere, numeri e underscore, ma non possono iniziare con un numero."
+      }
+    ]
+  },
+  {
+    "title": "PHP Fundamentals",
+    "faqs": [
+      {
+        "question": "Come funziona l'istruzione 'if' in PHP?",
+        "answer": "L'istruzione 'if' in PHP funziona in modo simile a JavaScript, eseguendo il codice tra le graffe se la condizione specificata è vera."
+      },
+      {
+        "question": "Quali sono gli operatori logici utilizzati in PHP?",
+        "answer": "Gli operatori logici in PHP includono '&&' (e logico), '||' (o logico), '==' (uguaglianza), '!=' (diversità), '>' (maggiore di) e '<' (minore di)."
+      },
+      {
+        "question": "Come si utilizza il Null coalescing operator in PHP?",
+        "answer": "Il Null coalescing operator '??' in PHP è usato per restituire il primo valore non-null tra due o più opzioni. Ad esempio, '\$username = \$_GET['user'] ?? 'nobody';' assegna 'nobody' a \$username se \$_GET['user'] non esiste."
+      },
+      {
+        "question": "Come si concatenano le stringhe in PHP?",
+        "answer": "In PHP, le stringhe vengono concatenate utilizzando l'operatore punto '.'. Ad esempio, '\$saluto = 'Ciao ' . 'Mondo!';' combina due stringhe in una."
+      },
+      {
+        "question": "Come si gestiscono gli array in PHP?",
+        "answer": "Gli array in PHP possono essere numerici o associativi (con chiavi personalizzate). Si accede ai valori degli array usando le parentesi quadre, ad esempio, '\$array['chiave']'. Gli array multidimensionali e le funzioni di manipolazione degli array sono anch'essi supportati."
+      }
+    ]
+  },
+  {
+    "title": "PHP Functions, Include, Require, Session, Redirect",
+    "faqs": [
+      {
+        "question": "Come si definiscono e si utilizzano le funzioni in PHP?",
+        "answer": "Le funzioni in PHP sono definite usando la parola chiave 'function' seguita dal nome della funzione e parentesi. Sono simili a quelle in JavaScript e possono essere incluse nei file PHP tramite 'include' o 'require'."
+      },
+      {
+        "question": "Qual è la differenza tra 'include' e 'require' in PHP?",
+        "answer": "In PHP, 'include' inserisce il contenuto di un altro file PHP nel file corrente. Se il file non esiste, genera un warning. 'Require' fa la stessa cosa ma genera un errore fatale se il file non esiste, interrompendo lo script."
+      },
+      {
+        "question": "Come si gestiscono le sessioni in PHP?",
+        "answer": "Le sessioni in PHP vengono gestite tramite la funzione 'session_start()', che inizializza una sessione o riprende quella esistente. Le variabili di sessione sono conservate in '$_SESSION' e possono essere utilizzate tra più pagine."
+      },
+      {
+        "question": "Come si fa un redirect in PHP?",
+        "answer": "Un redirect in PHP si fa usando la funzione 'header()' con 'Location:' seguito dall'URL della pagina di destinazione. Ad esempio, 'header('Location: https://www.example.com');' reindirizzerà l'utente a 'www.example.com'."
+      }
+    ]
+  },
+  {
+    "title": "PHP JSON Encode, JSON Decode",
+    "faqs": [
+      {
+        "question": "Cosa fa la funzione `json_encode` in PHP?",
+        "answer": "La funzione `json_encode` in PHP converte una variabile PHP (come un array) in una stringa JSON, che può essere utilizzata in JavaScript o per lo scambio di dati."
+      },
+      {
+        "question": "Come si utilizza `json_decode` in PHP?",
+        "answer": "La funzione `json_decode` in PHP converte una stringa JSON in una variabile PHP, come un array o un oggetto. È utile per elaborare dati JSON ricevuti da un'API o un frontend JavaScript."
+      },
+      {
+        "question": "È possibile specificare se `json_decode` deve restituire un array associativo?",
+        "answer": "Sì, passando `true` come secondo parametro a `json_decode`, la funzione restituirà un array associativo invece di un oggetto."
+      },
+      {
+        "question": "Come si possono gestire gli errori nella codifica/decodifica JSON in PHP?",
+        "answer": "Si possono gestire gli errori in `json_encode` e `json_decode` utilizzando le funzioni `json_last_error` o `json_last_error_msg` per ottenere informazioni sull'errore."
+      },
+      {
+        "question": "Qual è il ruolo di `header('Content-Type: application/json')` in PHP?",
+        "answer": "L'uso di `header('Content-Type: application/json')` in PHP indica che il contenuto restituito dallo script è in formato JSON, il che è essenziale per le API RESTful o le risposte AJAX."
+      }
+    ]
+  },
+  {
+    "title": "PHP 8 - OOP Intro",
+    "faqs": [
+      {
+        "question": "Che cos'è la Programmazione Orientata agli Oggetti (OOP) in PHP?",
+        "answer": "La Programmazione Orientata agli Oggetti (OOP) in PHP è un paradigma di programmazione che consente di strutturare il software come una collezione di oggetti che possono contenere dati e funzionalità."
+      },
+      {
+        "question": "Come si crea una classe in PHP?",
+        "answer": "In PHP, una classe viene creata usando la parola chiave 'class', seguita dal nome della classe. Ad esempio, 'class User {}' definisce una classe chiamata User."
+      },
+      {
+        "question": "Come si crea un'istanza di una classe in PHP?",
+        "answer": "Un'istanza di una classe in PHP viene creata usando la parola chiave 'new' seguita dal nome della classe. Ad esempio, '$user = new User();' crea un'istanza della classe User."
+      },
+      {
+        "question": "Qual è la differenza tra proprietà e metodi in una classe PHP?",
+        "answer": "Nelle classi PHP, le proprietà sono variabili che contengono i dati dell'oggetto, mentre i metodi sono funzioni che definiscono il comportamento dell'oggetto."
+      },
+      {
+        "question": "Come si accede alle proprietà e ai metodi di un'istanza di classe in PHP?",
+        "answer": "In PHP, si accede alle proprietà e ai metodi di un'istanza di classe usando l'operatore '->'. Ad esempio, '$user->name' accede alla proprietà 'name' dell'istanza 'user'."
+      }
+    ]
+  },
+  {
+    "title": "PHP OOP Inheritance",
+    "faqs": [
+      {
+        "question": "Che cosa è l'ereditarietà in PHP OOP (Object-Oriented Programming)?",
+        "answer": "L'ereditarietà in PHP OOP è un principio che permette a una classe (classe figlia) di ereditare proprietà e metodi da un'altra classe (classe genitore)."
+      },
+      {
+        "question": "Come si implementa l'ereditarietà in PHP?",
+        "answer": "In PHP, l'ereditarietà si implementa utilizzando la parola chiave 'extends'. Ad esempio, 'class ClasseFiglia extends ClasseGenitore' permette a 'ClasseFiglia' di ereditare da 'ClasseGenitore'."
+      },
+      {
+        "question": "È possibile estendere più classi in PHP?",
+        "answer": "No, PHP supporta solo l'ereditarietà singola, il che significa che una classe può estendere solo una classe genitore alla volta."
+      },
+      {
+        "question": "Come si possono sovrascrivere i metodi ereditati in PHP?",
+        "answer": "In PHP, i metodi ereditati possono essere sovrascritti definendo un metodo con lo stesso nome nella classe figlia. Questo nuovo metodo sostituirà quello ereditato dalla classe genitore."
+      },
+      {
+        "question": "Cosa significa 'Overloading' e 'Overriding' in PHP?",
+        "answer": "'Overloading' in PHP si riferisce alla creazione di metodi con lo stesso nome ma con firme diverse nella stessa classe. 'Overriding' invece riguarda la sovrascrittura di un metodo ereditato in una classe figlia."
+      }
+    ]
+  },
+
+
+
+
+]
+

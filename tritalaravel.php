@@ -1,8 +1,12 @@
 <?php
 
+include "lib/functions.php";
+
 //config
+$dbName = "tritalaravel"; //quest
+$config_dir = __DIR__ . "/config";
 $repos_dir = "tritalaravel"; //se cambiata da mettere in .gitignore
-$repo_name = "laravel-one-to-many";
+$repo_name = "laravel-many-to-many";
 //fine config
 
 echo "*** Inizio verifica compiti ***\n";
@@ -24,6 +28,7 @@ $users = array(
     "Valentina-De-Mite",
     "valeriodipaolo1997",
     "CarloFanelli",
+    'lucafranzoi98',
     "LiciaLicari",
     "francescomascellino",
     "Francesco-Munafo",
@@ -99,20 +104,21 @@ while (true) {
 
         $user_dir = "$initial_dir/$repos_dir/$user";
         $repo_dir = "$user_dir/$repo_name";
-        $dbName = sanitizeDatabaseName("{$user}_{$repo_name}");
+
+        echo "Eliminazione vecchio db $dbName\n";
+        executeQuery("DROP DATABASE `$dbName`;");
 
         echo "Controllo sporcizia $user\n";
         if (file_exists($user_dir)) {
 
             echo "Cancello vecchia directory $user_dir\n";
             run("rm -rf $user_dir");
-            echo "Eliminazione vecchio db $dbName\n";
-            executeQuery("DROP DATABASE `$dbName`;");
 
         }
 
         echo "Creazione nuovo db $dbName\n";
         executeQuery("CREATE DATABASE `$dbName`;");
+
         echo "Creazione nuova directory $dbName $user_dir\n";
         mkdir($user_dir, 0777, true);
 
@@ -131,23 +137,7 @@ while (true) {
 
         echo "Lettura .env_example per $user\n";
         // Leggi il contenuto del file .env
-        $envContent = file_get_contents($repo_dir . "/.env.example", true);
-
-        echo "Sostituzione conf db .env_example per $user\n";
-        // Rimuovi le vecchie impostazioni del database
-        $envContent = preg_replace('/^DB_.*\n/m', '', $envContent);
-
-        // Aggiungi la nuova configurazione del database
-        $dbConfig = "\nDB_CONNECTION=mysql\n"
-            . "DB_HOST=localhost\n"
-            . "DB_PORT=3306\n"
-            . "DB_DATABASE=" . $dbName . "\n"
-            . "DB_USERNAME=root\n"
-            . "DB_PASSWORD=root\n"
-            . "DB_SOCKET=/Applications/MAMP/tmp/mysql/mysql.sock\n";
-
-        $envContent .= $dbConfig;
-
+        $envContent = file_get_contents($config_dir . "/.env", true);
         echo "Salvataggio .env per $user\n";
         // Scrivi il contenuto modificato nel file .env
         file_put_contents($repo_dir . "/.env", $envContent);
@@ -208,52 +198,6 @@ while (true) {
         // Torna alla directory corrente iniziale dopo ogni operazione
         chdir($initial_dir);
     }
-}
-
-
-function sanitizeDatabaseName($name)
-{
-    // Rimuove i caratteri non consentiti
-    $sanitizedName = strtolower($name);
-    $sanitizedName = str_replace("-", "_", $sanitizedName);
-
-
-    // Tronca il nome se supera la lunghezza massima
-    return substr($sanitizedName, 0, 64);
-}
-
-function run($command)
-{
-    $output = shell_exec($command);
-    echo $output . "\n";
-}
-
-function executeQuery($query, $database = null)
-{
-    // Parametri di connessione al database
-    $host = 'localhost';
-    $user = 'root'; // Sostituisci con il tuo username
-    $password = 'root'; // Sostituisci con la tua password
-
-    // Apertura connessione
-    $conn = new mysqli($host, $user, $password, $database);
-
-    // Controlla la connessione
-    if ($conn->connect_error) {
-        die("Connessione fallita: " . $conn->connect_error);
-    }
-
-    echo "Esecuzione query $query\n";
-
-    // Esecuzione della query
-    if ($conn->query($query) === TRUE) {
-        echo "Query eseguita con successo: $query\N";
-    } else {
-        echo "Errore nell'esecuzione della query: " . $conn->error . "\n";
-    }
-
-    // Chiusura della connessione
-    $conn->close();
 }
 
 
