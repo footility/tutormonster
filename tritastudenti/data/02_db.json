@@ -7,10 +7,6 @@
         "answer": "Un database è un sistema tecnologico che permette di gestire una collezione organizzata di dati coerenti. Fornisce strumenti per la creazione, cancellazione, aggiornamento, e ricerca avanzata di dati."
       },
       {
-        "question": "Qual è la storia e l'evoluzione dei database?",
-        "answer": "L'evoluzione dei database inizia con i primi mainframe. Negli anni '70, Edgar Codd dell’IBM introduce i database relazionali. Da allora, sono stati sviluppati vari software di gestione di database."
-      },
-      {
         "question": "Cosa si intende per RDBMS?",
         "answer": "RDBMS (Relational Database Management System) è un software che permette di gestire database relazionali, organizzando i dati in tabelle con righe e colonne."
       },
@@ -74,8 +70,4 @@
       }
     ]
   }
-
-
-
-
 ]

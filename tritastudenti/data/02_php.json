@@ -37,15 +37,15 @@
       },
       {
         "question": "Come si utilizza il Null coalescing operator in PHP?",
-        "answer": "Il Null coalescing operator '??' in PHP è usato per restituire il primo valore non-null tra due o più opzioni. Ad esempio, '\$username = \$_GET['user'] ?? 'nobody';' assegna 'nobody' a \$username se \$_GET['user'] non esiste."
+        "answer": "Il Null coalescing operator '??' in PHP è usato per restituire il primo valore non-null tra due o più opzioni. Ad esempio, '\\$username = \\$_GET['user'] ?? 'nobody';' assegna 'nobody' a \\$username se \\$_GET['user'] non esiste."
       },
       {
         "question": "Come si concatenano le stringhe in PHP?",
-        "answer": "In PHP, le stringhe vengono concatenate utilizzando l'operatore punto '.'. Ad esempio, '\$saluto = 'Ciao ' . 'Mondo!';' combina due stringhe in una."
+        "answer": "In PHP, le stringhe vengono concatenate utilizzando l'operatore punto '.'. Ad esempio, '\\$saluto = 'Ciao ' . 'Mondo!';' combina due stringhe in una."
       },
       {
         "question": "Come si gestiscono gli array in PHP?",
-        "answer": "Gli array in PHP possono essere numerici o associativi (con chiavi personalizzate). Si accede ai valori degli array usando le parentesi quadre, ad esempio, '\$array['chiave']'. Gli array multidimensionali e le funzioni di manipolazione degli array sono anch'essi supportati."
+        "answer": "Gli array in PHP possono essere numerici o associativi (con chiavi personalizzate). Si accede ai valori degli array usando le parentesi quadre, ad esempio, '\\$array['chiave']'. Gli array multidimensionali e le funzioni di manipolazione degli array sono anch'essi supportati."
       }
     ]
   },
@@ -145,9 +145,6 @@
       }
     ]
   },
-
-
-
 
 ]
 

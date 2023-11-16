@@ -1,0 +1,329 @@
+[
+  {
+    "title": "Introduzione a JavaScript",
+    "faqs": [
+      {
+        "question": "Quali sono le origini di JavaScript?",
+        "answer": "Creato nel 1995 da Netscape, JavaScript (originariamente LiveScript) permetteva l'interazione con oggetti web. Divenne ECMAScript nel 1998 per standardizzazione."
+      },
+      {
+        "question": "Come è cambiato l'uso di JavaScript nel tempo?",
+        "answer": "Inizialmente usato solo lato client, JavaScript è diventato anche un linguaggio server-side grazie a Node.js nel 2010, ampliando le sue applicazioni."
+      },
+      {
+        "question": "Quali sono le basi dell'uso di JavaScript nel frontend?",
+        "answer": "JavaScript nel frontend consente di accedere e modificare elementi HTML, reagire a eventi dell'utente, validare dati e interagire con il browser."
+      },
+      {
+        "question": "Cosa occorre per iniziare a programmare in JavaScript?",
+        "answer": "Per iniziare con JavaScript, serve un editor di testo e un browser. Il codice può essere inserito sia in-line in HTML sia in file JavaScript esterni."
+      }
+    ]
+  },
+  {
+    "title": "Introduzione a JavaScript",
+    "faqs": [
+      {
+        "question": "Cos'è un linguaggio di programmazione?",
+        "answer": "Un linguaggio di programmazione è un insieme di istruzioni che possono essere usate per produrre vari tipi di output. È composto da simboli che rispettano regole grammaticali e sintattiche."
+      },
+      {
+        "question": "Quali sono le basi della rappresentazione delle informazioni in informatica?",
+        "answer": "Le basi includono il codice binario, che usa solo i valori 0 e 1 (bit) per rappresentare informazioni. Sequenze di bit possono rappresentare vari valori, con 8 bit che formano un byte."
+      },
+      {
+        "question": "Come è evoluto il concetto di programmazione nel tempo?",
+        "answer": "La programmazione è iniziata con dispositivi come la macchina analitica di Charles Babbage, che usava schede perforate per istruzioni. Oggi, la programmazione è molto più avanzata e utilizza linguaggi come JavaScript."
+      },
+      {
+        "question": "Qual è la differenza tra linguaggi di programmazione compilati e interpretati?",
+        "answer": "I linguaggi compilati vengono trasformati in codice macchina prima dell'esecuzione, mentre i linguaggi interpretati vengono eseguiti direttamente da un interprete. JavaScript è un linguaggio interpretato."
+      }
+    ]
+  },
+  {
+    "title": "Variabili in JavaScript",
+    "faqs": [
+      {
+        "question": "Che cosa sono le variabili in JavaScript?",
+        "answer": "Le variabili sono contenitori per memorizzare dati. Questi dati possono cambiare durante l'esecuzione del programma."
+      },
+      {
+        "question": "Quali sono le parole chiave per definire variabili in JavaScript?",
+        "answer": "Le variabili in JavaScript vengono definite usando le parole chiave 'var', 'let', e 'const', ognuna con caratteristiche specifiche."
+      },
+      {
+        "question": "Differenze tra 'const', 'let' e 'var' in JavaScript?",
+        "answer": "'const' definisce variabili non riassegnabili, 'let' definisce variabili riassegnabili e 'var' è un vecchio modo di definire variabili, soggetto ad hoisting."
+      },
+      {
+        "question": "Cos'è l'hoisting in JavaScript?",
+        "answer": "L'hoisting è la capacità di JavaScript di spostare dichiarazioni di variabili e funzioni all'inizio dello scope. Le variabili dichiarate con 'var' possono essere usate prima della loro dichiarazione."
+      }
+    ]
+  },
+  {
+    "title": "Istruzioni Condizionali in JavaScript",
+    "faqs": [
+      {
+        "question": "Cosa sono le istruzioni condizionali in JavaScript?",
+        "answer": "Le istruzioni condizionali in JavaScript permettono di eseguire diversi blocchi di codice a seconda che una condizione specifica sia verificata o meno."
+      },
+      {
+        "question": "Quali sono gli operatori relazionali in JavaScript?",
+        "answer": "Gli operatori relazionali in JavaScript includono == (uguaglianza), != (diversità), > (maggiore di), < (minore di), >= (maggiore o uguale), <= (minore o uguale)."
+      },
+      {
+        "question": "Come funzionano gli operatori logici in JavaScript?",
+        "answer": "Gli operatori logici in JavaScript combinano espressioni booleane. Include && (and), || (or), e ! (not), che rispettivamente restituiscono vero se entrambi gli operandi sono veri, vero se almeno uno degli operandi è vero, e il contrario del valore di verità dell'operando."
+      }
+    ]
+  },
+  {
+    "title": "JavaScript e HTML",
+    "faqs": [
+      {
+        "question": "Come può JavaScript interagire con HTML?",
+        "answer": "JavaScript può modificare l'HTML aggiungendo o rimuovendo classi CSS, cambiando l'inner HTML di un elemento, o nascondendo elementi."
+      },
+      {
+        "question": "Quali eventi JavaScript possono essere utilizzati per interagire con HTML?",
+        "answer": "JavaScript può reagire a vari eventi come click, hover, o il caricamento completo della pagina."
+      },
+      {
+        "question": "Cosa significa DOM in JavaScript?",
+        "answer": "DOM sta per Document Object Model, una rappresentazione ad albero di elementi e tag che formano una pagina web."
+      },
+      {
+        "question": "Quali sono alcune operazioni che si possono fare su un elemento DOM in JavaScript?",
+        "answer": "Operazioni su elementi DOM includono modificare classi CSS, innerHTML, stili CSS, gestire eventi e ottenere o impostare valori di elementi."
+      }
+    ]
+  },
+  {
+    "title": "Cicli for in JavaScript",
+    "faqs": [
+      {
+        "question": "Come si struttura un ciclo for in JavaScript?",
+        "answer": "Un ciclo for in JavaScript inizia con la parola chiave 'for', seguita da tre espressioni tra parentesi: inizializzazione, condizione e incremento/decremento."
+      },
+      {
+        "question": "Qual è lo scopo di un ciclo for?",
+        "answer": "Un ciclo for è utilizzato per eseguire un blocco di codice più volte fino a quando una condizione specifica rimane vera."
+      },
+      {
+        "question": "Come si possono usare i cicli for con il DOM?",
+        "answer": "I cicli for possono essere usati per creare o modificare elementi nel DOM, come aggiungere una serie di elementi HTML dinamicamente."
+      }
+    ]
+  },
+  {
+    "title": "JavaScript: Array e Cicli for",
+    "faqs": [
+      {
+        "question": "Come si crea e si utilizza un array in JavaScript?",
+        "answer": "Un array in JavaScript viene creato elencando gli elementi tra parentesi quadre e separandoli con virgole. Gli elementi possono essere acceduti tramite l'indice, iniziando da 0."
+      },
+      {
+        "question": "In che modo i cicli for possono lavorare con gli array?",
+        "answer": "I cicli for possono attraversare un array usando la proprietà .length dell'array per determinare il numero di iterazioni."
+      },
+      {
+        "question": "Come si aggiunge un elemento a un array in JavaScript?",
+        "answer": "Si possono aggiungere elementi a un array utilizzando metodi come .push() o .unshift(), che aggiungono elementi rispettivamente alla fine o all'inizio dell'array."
+      }
+    ]
+  },
+  {
+    "title": "Ciclo While in JavaScript",
+    "faqs": [
+      {
+        "question": "Come si scrive un ciclo while in JavaScript?",
+        "answer": "Un ciclo while inizia con la parola chiave 'while', seguita da una condizione tra parentesi. Il codice all'interno delle parentesi graffe viene eseguito finché la condizione è vera."
+      },
+      {
+        "question": "In quali situazioni è preferibile usare un ciclo while?",
+        "answer": "Il ciclo while è utile quando non si conosce a priori il numero di iterazioni necessarie e la condizione di terminazione è dinamica."
+      },
+      {
+        "question": "Qual è la differenza principale tra ciclo while e ciclo for?",
+        "answer": "Il ciclo for è più adatto per iterazioni con un numero noto di ripetizioni, mentre il ciclo while è migliore per condizioni più dinamiche o sconosciute."
+      },
+      {
+        "question": "Cosa succede se la condizione di un ciclo while non diventa mai falsa?",
+        "answer": "Se la condizione di un ciclo while rimane sempre vera, il ciclo continuerà all'infinito, potenzialmente causando un blocco del programma."
+      }
+    ]
+  },
+  {
+    "title": "Ciclo While in JavaScript",
+    "faqs": [
+      {
+        "question": "Come si scrive un ciclo while in JavaScript?",
+        "answer": "Un ciclo while inizia con la parola chiave 'while', seguita da una condizione tra parentesi. Il codice all'interno delle parentesi graffe viene eseguito finché la condizione è vera."
+      },
+      {
+        "question": "In quali situazioni è preferibile usare un ciclo while?",
+        "answer": "Il ciclo while è utile quando non si conosce a priori il numero di iterazioni necessarie e la condizione di terminazione è dinamica."
+      },
+      {
+        "question": "Qual è la differenza principale tra ciclo while e ciclo for?",
+        "answer": "Il ciclo for è più adatto per iterazioni con un numero noto di ripetizioni, mentre il ciclo while è migliore per condizioni più dinamiche o sconosciute."
+      },
+      {
+        "question": "Cosa succede se la condizione di un ciclo while non diventa mai falsa?",
+        "answer": "Se la condizione di un ciclo while rimane sempre vera, il ciclo continuerà all'infinito, potenzialmente causando un blocco del programma."
+      }
+    ]
+  },
+  {
+    "title": "Istruzione Switch-Case in JavaScript",
+    "faqs": [
+      {
+        "question": "Quando è preferibile usare l'istruzione switch-case in JavaScript?",
+        "answer": "L'istruzione switch-case è preferibile quando si hanno molteplici condizioni da verificare, in alternativa a una serie di if-else."
+      },
+      {
+        "question": "Come si struttura uno switch-case in JavaScript?",
+        "answer": "Uno switch-case inizia con la parola chiave 'switch', seguita da un'espressione tra parentesi. I vari casi vengono definiti con 'case' e un valore, seguiti da codice da eseguire, e terminano tipicamente con un 'break'."
+      },
+      {
+        "question": "Qual è il ruolo di 'break' in uno switch-case?",
+        "answer": "'break' è usato per uscire dal blocco switch una volta che un caso corrisponde, evitando l'esecuzione dei casi successivi."
+      }
+    ]
+  },
+  {
+    "title": "Funzioni in JavaScript",
+    "faqs": [
+      {
+        "question": "Come si definisce una funzione in JavaScript?",
+        "answer": "Una funzione in JavaScript viene definita con la parola chiave 'function', seguita dal nome della funzione, parametri tra parentesi tonde e il corpo della funzione tra parentesi graffe."
+      },
+      {
+        "question": "Quali sono i vantaggi dell'utilizzo delle funzioni?",
+        "answer": "Le funzioni permettono di riutilizzare il codice, rendendo il programma più pulito e riducendo le possibilità di errori."
+      },
+      {
+        "question": "Come si possono passare dati alle funzioni in JavaScript?",
+        "answer": "I dati vengono passati alle funzioni tramite argomenti, che possono essere utilizzati all'interno della funzione per eseguire operazioni o calcoli."
+      },
+      {
+        "question": "Cosa significa 'return' in una funzione?",
+        "answer": "'return' viene utilizzato per terminare l'esecuzione di una funzione e restituire un valore al codice che l'ha chiamata."
+      }
+    ]
+  },
+  {
+    "title": "Scope delle Funzioni in JavaScript",
+    "faqs": [
+      {
+        "question": "Che cos'è lo scope di una variabile in JavaScript?",
+        "answer": "Lo scope di una variabile indica la parte dello script in cui la variabile è accessibile e utilizzabile."
+      },
+      {
+        "question": "Come si differenziano le variabili globali e locali in JavaScript?",
+        "answer": "Le variabili globali sono accessibili ovunque nel codice, mentre le variabili locali sono accessibili solo all'interno del blocco o della funzione in cui sono dichiarate."
+      },
+      {
+        "question": "Cosa accade quando si utilizza 'var' all'interno di una funzione?",
+        "answer": "Quando si usa 'var' all'interno di una funzione, la variabile è limitata allo scope della funzione, non essendo accessibile al di fuori di essa."
+      },
+      {
+        "question": "Qual è il comportamento dello scope con 'let' e 'const'?",
+        "answer": "Con 'let' e 'const', lo scope delle variabili è limitato al blocco in cui sono dichiarate, fornendo un controllo più granulare rispetto a 'var'."
+      }
+    ]
+  },
+  {
+    "title": "Funzioni Freccia in JavaScript",
+    "faqs": [
+      {
+        "question": "Come si scrive una funzione freccia in JavaScript?",
+        "answer": "Una funzione freccia inizia con parentesi tonde per i parametri, seguita dal simbolo freccia '=>' e dal corpo della funzione."
+      },
+      {
+        "question": "Quali sono le particolarità delle funzioni freccia?",
+        "answer": "Le funzioni freccia non hanno un proprio 'this' ma lo ereditano dal loro scope genitore. Inoltre, offrono un return implicito quando non si usano le parentesi graffe."
+      },
+      {
+        "question": "In che modo il 'this' viene gestito in una funzione freccia?",
+        "answer": "Nella funzione freccia, 'this' rappresenta lo scope in cui la funzione è stata invocata, a differenza delle funzioni anonime tradizionali."
+      }
+    ]
+  },
+  {
+    "title": "Funzioni di Timing in JavaScript",
+    "faqs": [
+      {
+        "question": "Che cosa sono setTimeout e setInterval in JavaScript?",
+        "answer": "setTimeout attiva una funzione dopo un certo tempo, mentre setInterval attiva una funzione all'infinito ogni tot di tempo."
+      },
+      {
+        "question": "Come si ferma un setInterval?",
+        "answer": "Si ferma un setInterval salvando il risultato in una variabile e passandola a clearInterval."
+      },
+      {
+        "question": "Qual è il ruolo dell'asincronicità in JavaScript?",
+        "answer": "L'asincronicità in JavaScript permette di definire azioni che avverranno in un momento successivo, senza bloccare l'esecuzione del codice principale."
+      },
+      {
+        "question": "Come funzionano le callback nelle funzioni di timing?",
+        "answer": "Le callback nelle funzioni di timing come setTimeout vengono eseguite dopo il completamento del tempo specificato, seguendo l'ordine della coda di eventi del JavaScript."
+      }
+    ]
+  },
+  {
+    "title": "Oggetti in JavaScript",
+    "faqs": [
+      {
+        "question": "Che cos'è un oggetto in JavaScript?",
+        "answer": "Un oggetto è una struttura di dati che può contenere più valori, ai quali si accede tramite un indice di nomi."
+      },
+      {
+        "question": "Come si crea e si accede a un oggetto in JavaScript?",
+        "answer": "Un oggetto si crea con parentesi graffe e coppie nome-valore. Si accede a un valore tramite la dot notation o parentesi quadre."
+      },
+      {
+        "question": "Come si aggiunge o modifica una proprietà in un oggetto?",
+        "answer": "Per aggiungere o modificare una proprietà, si usa la dot notation o le parentesi quadre. Se la proprietà esiste, viene modificata; se non esiste, viene aggiunta."
+      },
+      {
+        "question": "Come si utilizza un ciclo for..in con gli oggetti?",
+        "answer": "Il ciclo for..in permette di iterare tutte le proprietà di un oggetto, accedendo alla chiave e al valore corrispondente."
+      }
+    ]
+  },
+  {
+    "title": "Metodi forEach, map e filter in JavaScript",
+    "faqs": [
+      {
+        "question": "Come funziona il ciclo forEach in JavaScript?",
+        "answer": "forEach è un metodo degli array che esegue una funzione data in ingresso (parametro) su ogni elemento dell'array."
+      },
+      {
+        "question": "In che modo map è diverso da forEach?",
+        "answer": "map è simile a forEach ma crea un nuovo array con i risultati della funzione applicata a ciascun elemento dell'array originale."
+      },
+      {
+        "question": "Come si usa il metodo filter in JavaScript?",
+        "answer": "filter crea un nuovo array con tutti gli elementi che passano un test specificato da una funzione."
+      }
+    ]
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]
