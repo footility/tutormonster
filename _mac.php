@@ -1,12 +1,14 @@
 <?php
 
+
+
 include "lib/functions.php";
 
 //config
 $dbName = "tritalaravel"; //quest
 $config_dir = __DIR__ . "/config";
 $repos_dir = "tritalaravel"; //se cambiata da mettere in .gitignore
-$repo_name = "laravel-many-to-many";
+$repo_name = "laravel-api";
 //fine config
 
 echo "*** Inizio verifica compiti ***\n";
