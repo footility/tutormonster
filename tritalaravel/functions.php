@@ -1,9 +1,15 @@
 <?php
 
-function checkRepositoryExists($user, $repo)
+/**
+ * Ci permette di controllare se la repo esiste
+ * @param $student string utente dello studente per github
+ * @param $repo string nome delle repo
+ * @return bool se la repo esiste vero altrimenti falso
+ */
+function checkRepositoryExists($student, $repo)
 {
-    $url = "https://github.com/$user/$repo.git";
-    logMessage("controllo se la $repo esiste.", LOG_INFO, true, $user);
+    $url = "https://github.com/$student/$repo.git";
+    logMessage("controllo se la $repo esiste.", LOG_INFO, true, $student);
     $check = shell_exec("git ls-remote $url");
     return !empty($check);
 }
@@ -99,7 +105,7 @@ function run($command, $params, $background, $actor, $terminateOnError)
 
         logMessage(implode("\n", $output), $logLevel, false, $actor);
 
-        return $returnCode;
+        return ['code' => $returnCode, 'output' => $output];
     }
 }
 
@@ -108,11 +114,11 @@ function executeQuery($query, $database, $actor)
 {
     // Parametri di connessione al database
     $host = 'localhost';
-    $user = 'root'; // Sostituisci con il tuo username
+    $student = 'root'; // Sostituisci con il tuo username
     $password = 'root'; // Sostituisci con la tua password
 
     // Apertura connessione
-    $conn = new mysqli($host, $user, $password, $database);
+    $conn = new mysqli($host, $student, $password, $database);
 
     // Controlla la connessione
     if ($conn->connect_error) {
@@ -170,3 +176,89 @@ function CheckRepoStatus($actor, $destory, $create)
     }
 
 }
+
+function killProjectProcesses($actor, $pids = array())
+{
+
+    $output = run("ps -a | grep", CURRENT_STUDENT_REPO_DIR_NAME, false, $actor, false);
+    $output = $output['output'];
+
+    $newPid = null;
+    foreach ($output as $line) {
+        if (preg_match('/^\s*(\d+).*npm\srun\sdev/', $line, $matches)) {
+            // Aggiungi il PID specifico per "npm run dev"
+            $newPid = $matches[1];
+        } elseif (preg_match('/^\s*(\d+)/', $line, $matches)) {
+            // Aggiungi altri PID relativi al progetto
+            $newPid = $matches[1];
+        }
+
+        if (!in_array($newPid, $pids)) {
+            $pids[] = $newPid;
+        }
+    }
+
+
+    if (count($pids) > 0) {
+        logMessage("Eliminazione processi precedenti appesi...", LOG_WARNING, true, $actor);
+        foreach ($pids as $pid) {
+            run("kill", $pid, false, $actor, false);
+        }
+    } else {
+        logMessage("Nessun processo appeso travato", LOG_INFO, true, $actor);
+    }
+
+}
+
+function getLaravelRoutes($actor)
+{
+    logMessage("Recupero delle rotte Laravel in corso...", LOG_INFO, true, $actor);
+    $routesOutput = run(PHP_COMMAND, "artisan route:list", false, $actor, false);
+    $lines = $routesOutput['output'];
+
+    $routes = [];
+    foreach ($lines as $line) {
+        if (preg_match('/(GET|HEAD|POST|PUT|PATCH|DELETE)\s+([^\s]+)/', $line, $matches)) {
+            // $matches[1] è il metodo HTTP, $matches[2] è il nome della rotta
+            $routes[] = LARAVEL_URL_DEFAULT . "/$matches[2] [$matches[1]]";
+        }
+    }
+
+    return $routes;
+}
+
+function showRouteMenu($routes, $actor)
+{
+    do {
+        echo "**** Valutazione dello studente ****\n";
+        echo "\nScegli una rotta:\n";
+
+        // Stampa le rotte con un indice
+        foreach ($routes as $index => $route) {
+            echo ($index + 1) . ". $route\n";
+        }
+
+        echo "0. Esci\n";
+
+        $selectedIndex = readline('Seleziona una rotta (o 0 per uscire): ');
+
+        if ($selectedIndex == 0) {
+            logMessage("Uscita dal menu delle rotte", LOG_INFO, false, $actor);
+            break; // Esce dal menu
+        }
+
+        if (isset($routes[$selectedIndex - 1])) {
+            $selectedRoute = $routes[$selectedIndex - 1];
+
+            // Apri la rotta selezionata in Chrome (modifica l'URL base come necessario)
+            $url = explode(' ', $selectedRoute)[0];
+            run("open -a 'Google Chrome'", "'$url'", false, $actor, false);
+        } else {
+            logMessage("Selezione non valida.", LOG_WARNING, true, $actor);
+
+        }
+
+    } while (true);
+}
+
+

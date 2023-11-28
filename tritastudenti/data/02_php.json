@@ -37,7 +37,7 @@
       },
       {
         "question": "Come si utilizza il Null coalescing operator in PHP?",
-        "answer": "Il Null coalescing operator '??' in PHP è usato per restituire il primo valore non-null tra due o più opzioni. Ad esempio, '\\$username = \\$_GET['user'] ?? 'nobody';' assegna 'nobody' a \\$username se \\$_GET['user'] non esiste."
+        "answer": "Il Null coalescing operator '??' in PHP è usato per restituire il primo valore non-null tra due o più opzioni. Ad esempio, '\\$studentname = \\$_GET['user'] ?? 'nobody';' assegna 'nobody' a \\$studentname se \\$_GET['user'] non esiste."
       },
       {
         "question": "Come si concatenano le stringhe in PHP?",
@@ -108,7 +108,7 @@
       },
       {
         "question": "Come si crea un'istanza di una classe in PHP?",
-        "answer": "Un'istanza di una classe in PHP viene creata usando la parola chiave 'new' seguita dal nome della classe. Ad esempio, '$user = new User();' crea un'istanza della classe User."
+        "answer": "Un'istanza di una classe in PHP viene creata usando la parola chiave 'new' seguita dal nome della classe. Ad esempio, '$student = new User();' crea un'istanza della classe User."
       },
       {
         "question": "Qual è la differenza tra proprietà e metodi in una classe PHP?",
@@ -116,7 +116,7 @@
       },
       {
         "question": "Come si accede alle proprietà e ai metodi di un'istanza di classe in PHP?",
-        "answer": "In PHP, si accede alle proprietà e ai metodi di un'istanza di classe usando l'operatore '->'. Ad esempio, '$user->name' accede alla proprietà 'name' dell'istanza 'user'."
+        "answer": "In PHP, si accede alle proprietà e ai metodi di un'istanza di classe usando l'operatore '->'. Ad esempio, '$student->name' accede alla proprietà 'name' dell'istanza 'user'."
       }
     ]
   },

@@ -47,16 +47,8 @@ while (true) {
 
     }
 
+
     foreach ($selectedStudents as $student) {
-
-        $clone_url = "https://github.com/{$student}/{$REPO_NAME}.git";
-
-        if (!checkRepositoryExists($student, $REPO_NAME)) {
-            $message = "Lo studente $student non ha caricato la repo $REPO_NAME";
-            logMessage($message, LOG_WARNING, true, $student);
-            readline($message . "\nContatta lo studente e premi invio per continuare!");
-            continue; //prossimo studente
-        }
 
         logMessage("Pulizia Filesystem...", LOG_INFO, true, $student);
         CheckRepoStatus($student, true, true);
@@ -65,50 +57,93 @@ while (true) {
         executeQuery("DROP DATABASE IF EXISTS `" . DB_NAME . "`;", null, $student);
         executeQuery("CREATE DATABASE `" . DB_NAME . "`;", null, $student);
 
-        logMessage("Mi sposto in " . REPO_DIR, LOG_WARNING, true, $student);
-        chdir(REPO_DIR);
+        killProjectProcesses($student);
 
-        logMessage("Inizio clonazione e installazione LARAVEL", LOG_INFO, true, $student);
-        $returnCode = run("git", "clone $clone_url", false, $student, false);
-        if ($returnCode != 0) {
-            readline("Non è possibile proseguire, premere invio per passare al prossimo studente.");
-            continue;
+        //rotte di test
+        $routes = [];
+
+        foreach ($REPO_LIST as $REPO_NAME) {
+
+
+            if (!checkRepositoryExists($student, $REPO_NAME)) {
+                $message = "Lo studente $student non ha caricato la repo $REPO_NAME";
+                logMessage($message, LOG_WARNING, true, $student);
+                readline($message . "\nContatta lo studente e premi invio per continuare!");
+                continue; //prossimo repo o prossimo studente
+            }
+
+            logMessage("Mi sposto in " . REPO_DIR, LOG_WARNING, true, $student);
+            chdir(REPO_DIR);
+
+            $clone_url = "https://github.com/{$student}/{$REPO_NAME}.git";
+
+            logMessage("Inizio clonazione e installazione ambiente", LOG_INFO, true, $student);
+            $runResponse = run("git", "clone $clone_url", false, $student, false);
+            if ($runResponse['code'] != 0) {
+                readline("Non è possibile proseguire, premere invio per passare al prossimo studente.");
+                continue;
+            }
+
+            $REPO_DIR = REPO_DIR . DIRECTORY_SEPARATOR . $REPO_NAME;
+            $REPO_ENV = $REPO_DIR . DIRECTORY_SEPARATOR . ".env";
+
+            logMessage("Mi sposto in " . $REPO_DIR, LOG_WARNING, true, $student);
+            chdir($REPO_DIR);
+
+
+            //gestisco l'installazione di laravel solo nei progetti laravel
+            if (file_exists("artisan") && file_exists("composer.json")) {
+
+                logMessage("trovato progetto laravel", LOG_INFO, true, $student);
+                //questo comando serve a copiare il custom env per far funzionare laravel sulla macchina locale
+                run("cp", TRITALARAVEL_ENV . " " . $REPO_ENV, false, $student, false);
+
+                //sfilza di comandi
+
+                run(PHP_COMMAND . " " . COMPOSER_COMMAND, "install", false, $student, false); // Installazione delle dipendenze Composer
+                run(PHP_COMMAND, "artisan key:generate", false, $student, false);
+                run(PHP_COMMAND, "artisan migrate:install", false, $student, false);
+                run(PHP_COMMAND, "artisan migrate", false, $student, false);
+                run(PHP_COMMAND, "artisan db:seed", false, $student, false);
+                run(PHP_COMMAND, "artisan storage:link", false, $student, false);
+
+                executeQuery($FAKE_USER_QUERY, DB_NAME, $student);
+
+                $routes = array_merge($routes, getLaravelRoutes($student));
+
+                logMessage("Avvio artisan...", LOG_INFO, true, $student);
+                $artisanProcess = run(PHP_COMMAND, " artisan serve", true, $student, false); // Avvio Laravel in background
+
+            } else {
+                logMessage("Composer o laravel non presenti, installazione non possibile.", LOG_ERR, true, $student);
+            }
+
+            if (file_exists("package.json")) {
+
+                logMessage("trovato progetto compatiile npm", LOG_INFO, true, $student);
+                //per tutti gli altri progetti
+                run("npm", "install", false, $student, false);
+                logMessage("Avvio server (se presente)...", LOG_INFO, true, $student);
+                run("npm", "run build", false, $student, false); // Avvio NPM in background
+                $npmProcess = run("npm", "run dev", true, $student, false); // Avvio NPM in background
+
+                if (!in_array($routes, VITE_URL_5176) &&
+                    !in_array($routes, VITE_URL_5173) &&
+                    !in_array($routes, VITE_URL_5174)
+                ) {
+                    $routes[] = VITE_URL_5176;
+                    $routes[] = VITE_URL_5173;
+                    $routes[] = VITE_URL_5174;
+                }
+
+            } else {
+                logMessage("package.json assente, imppssibile installare progetto.", LOG_ERR, true, $student);
+            }
         }
 
-        logMessage("Mi sposto in " . $REPO_DIR, LOG_WARNING, true, $student);
-        chdir($REPO_DIR);
+        showRouteMenu($routes, $student);
 
-        //questo comando serve a copiare il custom env per far funzionare laravel sulla macchina locale
-        run("cp", TRITALARAVEL_ENV . " " . $REPO_ENV, false, $student, false);
-
-        //sfilza di comandi
-        run("npm", "install", false, $student, false);
-        run(PHP_COMMAND . " " . COMPOSER_COMMAND, "install", false, $student, false); // Installazione delle dipendenze Composer
-        run(PHP_COMMAND, "artisan key:generate", false, $student, false);
-        run(PHP_COMMAND, "artisan migrate:install", false, $student, false);
-        run(PHP_COMMAND, "artisan migrate", false, $student, false);
-        run(PHP_COMMAND, "artisan db:seed", false, $student, false);
-        run(PHP_COMMAND, "artisan storage:link", false, $student, false);
-
-        executeQuery($FAKE_USER_QUERY, DB_NAME, $student);
-
-        logMessage("Avvio vite...", LOG_INFO, true, $student);
-        $npmProcess = run("npm", "run dev", true, $student, false); // Avvio NPM in background
-        logMessage("Avvio artisan...", LOG_INFO, true, $student);
-        $laravelProcess = run(PHP_COMMAND, " artisan serve", true, $student, false); // Avvio Laravel in background
-
-        logMessage("...attendi " . STATIC_AIWAIT_SERVER_SECOND . " secondi.", LOG_INFO, true, $student);
-        sleep(STATIC_AIWAIT_SERVER_SECOND);
-
-        run("open", "-a 'Google Chrome' " . CHROME_URL_DEFAULT, false, $student, false); // Sostituire con il comando appropriato per il tuo sistema operativo
-        // Attesa della chiusura di Chrome
-        logMessage("Ora valuta lo studente...", LOG_INFO, true, $student);
-        readline("Premi [Enter] dopo aver chiuso Chrome...");
-
-        logMessage("Chiusura laravel...", LOG_INFO, true, $student);
-        run("kill", $laravelProcess, false, $student, false);
-        logMessage("Chiusura VITE...", LOG_INFO, true, $student);
-        run("kill", $npmProcess, false, $student, false);
+        killProjectProcesses($student, [$artisanProcess, $npmProcess]);
 
         logMessage("Pulizia database...", LOG_INFO, true, $student);
         executeQuery("DROP DATABASE IF EXISTS `" . DB_NAME . "`;", null, $student);

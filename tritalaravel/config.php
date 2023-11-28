@@ -16,7 +16,9 @@ const CONFIG_DIR = ROOT_DIR . DIRECTORY_SEPARATOR . "configs";
  * aiuta a mantenere più pulito il filesystem
  */
 
-const REPO_DIR = ROOT_DIR . DIRECTORY_SEPARATOR . "CURRENT_STUDENT_REPO";
+const CURRENT_STUDENT_REPO_DIR_NAME = "CURRENT_STUDENT_REPO";
+
+const REPO_DIR = ROOT_DIR . DIRECTORY_SEPARATOR . CURRENT_STUDENT_REPO_DIR_NAME;
 const LOG_DIR = ROOT_DIR . DIRECTORY_SEPARATOR . "logs";
 const LOG_FILE = LOG_DIR . DIRECTORY_SEPARATOR . "tritalaravel.log";
 const TRITALARAVEL_ENV = CONFIG_DIR . DIRECTORY_SEPARATOR . ".env";
@@ -25,7 +27,11 @@ const CLASS_PARTS = 2;
 const PHP_COMMAND = '/usr/local/bin/php';
 const COMPOSER_COMMAND = '/Users/mistre/Library/Application\ Support/Herd/bin/composer';
 
-const CHROME_URL_DEFAULT = "http://localhost:8000";
+const LARAVEL_URL_DEFAULT = "http://localhost:8000";
+const VITE_URL_5176 = "http://localhost:5176";
+const VITE_URL_5173 = "http://localhost:5173";
+const VITE_URL_5174 = "http://localhost:5174";
+
 
 //per non far arrabbiare laravel aspettiamo sia vite che laravel si avviino prima di aprire chrome
 const STATIC_AIWAIT_SERVER_SECOND = 4;
@@ -49,6 +55,7 @@ const STUDENTS_GITHUB = array(
     'lucafranzoi98',
     "LiciaLicari",
     "francescomascellino",
+    "DavideMorandini",
     "Francesco-Munafo",
     "matteoNapoli42",
     "lorenzo-neri",
@@ -84,21 +91,29 @@ $CLASS_PART_NUMBER = ceil($STUDENT_COUNT / CLASS_PARTS);
  */
 
 // Verifica se il nome della repository è stato fornito come parametro
-if ($argc < 2) {
-    die("Errore: Devi specificare il nome della repository come primo parametro.\n");
+if ($argc < 2 || $argc > 3) {
+    die("Errore: Devi specificare il nome delle repository separate da spazio (max 2).\n");
 }
+
 
 /**
  * DEFINIZIONE DELLE "COSTANTI" dinamiche
  */
 //faccio una variabile scritta come costante per renderla una "conf"
-$REPO_NAME = $argv[1];  // Imposta il nome della repository dal primo parametro
+$REPO_LIST = [];
 
-//questa repo dir è dinamica
-$REPO_DIR = REPO_DIR . DIRECTORY_SEPARATOR . $REPO_NAME;
+if (isset($argv[1]) && $argv[1] != "") {
+    $REPO_LIST[] = $argv[1];
+}
 
-$REPO_ENV = $REPO_DIR . DIRECTORY_SEPARATOR . ".env";
+if (isset($argv[2]) && $argv[2] != "") {
+    $REPO_LIST[] = $argv[2];
+}
 
+
+/**
+ * DATABASE
+ */
 $FAKE_USER_PASS_HASHED = password_hash(FAKE_USER_PASS, PASSWORD_DEFAULT); // Hash della password
 
 $EMAIL_VERIFIED_AT = date('Y-m-d H:i:s'); // Timestamp corrente per email verificata
