@@ -19,49 +19,50 @@ $browser = 'C:\Program Files\Mozilla Firefox\firefox.exe';
 echo "*** Inizio verifica compiti ***\n";
 
 // lista degli utenti da controllare
-$users = array(
-    "Claudio-Bernardinetti",
-    "ElisaBoscani",
-    "giacomobranchi",
-    "samuelebruni",
-    "EliaBuratti",
-    "FedericaCampo97",
-    "marcocentonze",
-    "PietroCipolla95",
-    "FabioCostantino84",
-    "AntoninoCucuzza",
-    "GiuseppeDalessio7",
-    "EsterDahri1",
-    "Valentina-De-Mite",
-    "valeriodipaolo1997",
-    "CarloFanelli",
-    'lucafranzoi98',
-    "LiciaLicari",
-    "francescomascellino",
-    "Francesco-Munafo",
-    "matteoNapoli42",
-    "lorenzo-neri",
-    "MatteoNocera",
-    "danielplebani",
-    "Pietro907",
-    "davide-rullo",
-    "alessandrosaladino-tech",
-    "DaniloSalerno",
-    "RiccardoSansone",
-    "rpsobolewski",
-    "vgianluca96",
-    "FabioVasi",
-    "RiccardoVoltolina",
-    "MarcoZellini"
-);
-
+$users = [
+    0 => "Carlo-Adile",
+    1 => "chrialge",
+    2 => "StefDev1801",
+    3 => "MarioBroi",
+    4 => "fraberret",
+    5 => "Kasketto001",
+    6 => "Giovanni-Cattaneo",
+    7 => "SimoneCerri",
+    8 => "Lucaalex00",
+    9 => "danielecolaci",
+    10 => "andreadebortoli2",
+    11 => "antden99",
+    12 => "nicodellolio",
+    13 => "devitoangelo",
+    14 => "marinodilauro",
+    15 => "ghiottoandrea",
+    16 => "RiccardoImperiale",
+    17 => "Seko461",
+    18 => "manuelloverso",
+    19 => "GioMench",
+    20 => "giacomomarongiu",
+    21 => "PaoloMarzocchi",
+    22 => "emamoldo",
+    23 => "leamusa",
+    24 => "mattemutti",
+    25 => "simone-nolberto",
+    26 => "aryadeifiordi",
+    27 => "MassimoRomano",
+    28 => "Arianna-Salvini",
+    29 => "Nico-Serra",
+    30 => "StefanRaluca",
+    31 => "MatteoStrazzera",
+    32 => "StanislavTryfenko",
+    33 => "simoneevacca",
+    34 => "alessiavozzo",
+];
 
 // Flag per scegliere quale metà degli utenti processare
 $processFirstHalf = 2; // Imposta su false per processare la seconda metà
 
 // Determina la lunghezza dell'array e calcola il punto di divisione
 $userCount = count($users);
-$halfPoint = 17; // Francesco Mascellino esattamente ... anche se Davide e Lorenzo han abbandonato // ceil($userCount / 2);
+$halfPoint = 17; // Finisce al 17 poi inizia la seconda meta'
 
 echo "Studenti $userCount\n";
 
