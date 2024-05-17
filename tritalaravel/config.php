@@ -36,41 +36,55 @@ const VITE_URL_5174 = "http://localhost:5174";
 //per non far arrabbiare laravel aspettiamo sia vite che laravel si avviino prima di aprire chrome
 const STATIC_AIWAIT_SERVER_SECOND = 4;
 
+/*
+ *
+ * da eseguire in montessori Object.keys(obj.students).forEach(item => console.log(obj.students[item].github_user)) per trovare gli studenti
+
+const lista = [];
+    Object.keys(obj.students).forEach(item => {
+        lista.push(`"${obj.students[item].github_user}"`);
+    });
+    console.log(lista.join(",\n    "));
+ *
+ */
+
 const STUDENTS_GITHUB = array(
-    "Claudio-Bernardinetti",
-    "ElisaBoscani",
-    "giacomobranchi",
-    "samuelebruni",
-    "EliaBuratti",
-    "FedericaCampo97",
-    "marcocentonze",
-    "PietroCipolla95",
-    "FabioCostantino84",
-    "AntoninoCucuzza",
-    "GiuseppeDalessio7",
-    "EsterDahri1",
-    "Valentina-De-Mite",
-    "valeriodipaolo1997",
-    "CarloFanelli",
-    'lucafranzoi98',
-    "LiciaLicari",
-    "francescomascellino",
-    "DavideMorandini",
-    "Francesco-Munafo",
-    "matteoNapoli42",
-    "lorenzo-neri",
-    "MatteoNocera",
-    "danielplebani",
-    "Pietro907",
-    "davide-rullo",
-    "alessandrosaladino-tech",
-    "DaniloSalerno",
-    "RiccardoSansone",
-    "rpsobolewski",
-    "vgianluca96",
-    "FabioVasi",
-    "RiccardoVoltolina",
-    "MarcoZellini"
+    "enrico-amerio",
+    "simoneaucello",
+    "NicolaBellini",
+    "dario-bennardino",
+    "EugenioCaiazz0",
+    "Matteo0421",
+    "AlessiaCiabatti",
+    "PatrizioCorcione",
+    "alessandrodamato",
+    "Daniele206",
+    "luigidibella",
+    "natdm02",
+    "Shinrael",
+    "davidefois96",
+    "SilvioGiacomelli",
+    "IlariaGuarnieri",
+    "juri931",
+    "Oltion-Koceku",
+    "JacopoLombardi",
+    "EmilianaManzo",
+    "marraguglielmo",
+    "marroccuandrea",
+    "stefanometallo",
+    "Alessandro-Moroni",
+    "Jomar-Navarro",
+    "saranazli",
+    "Benedettopana",
+    "davide-piarulli",
+    "BeatriceRocchi",
+    "MarcoRomanohub",
+    "AlessioRomano95",
+    "giorgia-rondinelli",
+    "ElenaRuscitto",
+    "Laroussi-Sarhane",
+    "Alex-Sibiriu",
+    "AnnaSpjut"
 );
 
 

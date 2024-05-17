@@ -104,7 +104,16 @@ while (true) {
                 run(PHP_COMMAND, "artisan key:generate", false, $student, false);
                 run(PHP_COMMAND, "artisan migrate:install", false, $student, false);
                 run(PHP_COMMAND, "artisan migrate", false, $student, false);
-                run(PHP_COMMAND, "artisan db:seed", false, $student, false);
+
+                // Trova tutte le classi seeder nella directory database/seeders eccetto DatabaseSeeder.php
+                $seeders = glob('database/seeders/*.php');
+                foreach ($seeders as $seeder) {
+                    $className = basename($seeder, '.php');
+                    if ($className !== 'DatabaseSeeder') {
+                        run(PHP_COMMAND, "artisan db:seed --class=$className", false, $student, false);
+                    }
+                }
+
                 run(PHP_COMMAND, "artisan storage:link", false, $student, false);
 
                 executeQuery($FAKE_USER_QUERY, DB_NAME, $student);
@@ -127,9 +136,9 @@ while (true) {
                 run("npm", "run build", false, $student, false); // Avvio NPM in background
                 $npmProcess = run("npm", "run dev", true, $student, false); // Avvio NPM in background
 
-                if (!in_array($routes, VITE_URL_5176) &&
-                    !in_array($routes, VITE_URL_5173) &&
-                    !in_array($routes, VITE_URL_5174)
+                if (!in_array(VITE_URL_5176, $routes) &&
+                    !in_array(VITE_URL_5173, $routes) &&
+                    !in_array(VITE_URL_5174, $routes)
                 ) {
                     $routes[] = VITE_URL_5176;
                     $routes[] = VITE_URL_5173;
