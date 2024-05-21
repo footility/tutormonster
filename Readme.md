@@ -31,7 +31,8 @@ Per utilizzare lo script, assicurati di avere:
 
 ### Utilizzo
 Per utilizzare lo script:
-- Modifica l'array degli studenti nelle config.
+- Modifica l'array degli studenti nel file config.php
+- Assicurati di inserire le porte corrette di mysql dentro il file configs/.env
 - Esegui con `php run.php [repo-esercizio]`.
 - Segui le istruzioni in console.
 
