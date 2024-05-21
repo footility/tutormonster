@@ -100,7 +100,7 @@ while (true) {
 
                 //sfilza di comandi
 
-                run(PHP_COMMAND . " " . COMPOSER_COMMAND, "install", false, $student, false); // Installazione delle dipendenze Composer
+                run(COMPOSER_COMMAND, "install", false, $student, false); // Installazione delle dipendenze Composer
                 run(PHP_COMMAND, "artisan key:generate", false, $student, false);
                 run(PHP_COMMAND, "artisan migrate:install", false, $student, false);
                 run(PHP_COMMAND, "artisan migrate", false, $student, false);
@@ -129,7 +129,7 @@ while (true) {
 
             if (file_exists("package.json")) {
 
-                logMessage("trovato progetto compatiile npm", LOG_INFO, true, $student);
+                logMessage("trovato progetto compatibile npm", LOG_INFO, true, $student);
                 //per tutti gli altri progetti
                 run("npm", "install", false, $student, false);
                 logMessage("Avvio server (se presente)...", LOG_INFO, true, $student);

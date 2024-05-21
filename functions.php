@@ -262,3 +262,62 @@ function showRouteMenu($routes, $actor)
 }
 
 
+// Funzione per determinare il percorso dei comandi PHP e Composer
+function findCommandPath($command)
+{
+    $output = [];
+    $returnCode = 0;
+    exec("which $command", $output, $returnCode);
+
+    if ($returnCode == 0 && !empty($output)) {
+        return trim($output[0]);
+    }
+
+    return null;
+}
+
+// Funzione per richiedere conferma dall'utente
+function askForConfirmation($message)
+{
+    echo $message . " (yes/no): ";
+    $handle = fopen("php://stdin", "r");
+    $response = trim(fgets($handle));
+
+    if (strtolower($response) == 'yes') {
+        return true;
+    }
+
+    return false;
+}
+
+// Funzione per salvare la configurazione localmente
+function saveLocalConfig($config)
+{
+    file_put_contents('local_config.json', json_encode($config));
+}
+
+// Funzione per caricare la configurazione locale
+function loadLocalConfig()
+{
+    if (file_exists('local_config.json')) {
+        return json_decode(file_get_contents('local_config.json'), true);
+    }
+
+    return [];
+}
+
+// Funzione per scaricare composer.phar
+function downloadComposerPhar()
+{
+    $composerPharUrl = 'https://getcomposer.org/composer.phar';
+    $composerPharPath = __DIR__ . '/composer.phar';
+
+    if (!file_exists($composerPharPath)) {
+        echo "Downloading composer.phar...\n";
+        file_put_contents($composerPharPath, file_get_contents($composerPharUrl));
+    } else {
+        echo "composer.phar already exists at: $composerPharPath\n";
+    }
+
+    return $composerPharPath;
+}

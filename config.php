@@ -24,8 +24,55 @@ const LOG_FILE = LOG_DIR . DIRECTORY_SEPARATOR . "tritalaravel.log";
 const TRITALARAVEL_ENV = CONFIG_DIR . DIRECTORY_SEPARATOR . ".env";
 const CLASS_PARTS = 2;
 
-const PHP_COMMAND = '/usr/local/bin/php';
-const COMPOSER_COMMAND = '/Users/mistre/Library/Application\ Support/Herd/bin/composer';
+// Configurazioni iniziali
+$config = loadLocalConfig();
+
+// Controlla se PHP è configurato, altrimenti cerca il comando PHP
+if (empty($config['PHP_COMMAND'])) {
+    $phpCommand = findCommandPath('php');
+    if ($phpCommand) {
+        echo "PHP command found at: $phpCommand\n";
+        if (askForConfirmation("Do you want to use this PHP command?")) {
+            $config['PHP_COMMAND'] = $phpCommand;
+            saveLocalConfig($config);
+        } else {
+            die("Configuration aborted by user.\n");
+        }
+    } else {
+        die("PHP command not found. Please install PHP or specify its path manually.\n");
+    }
+}
+
+define('PHP_COMMAND', $config['PHP_COMMAND']);
+
+// Controlla se Composer è configurato, altrimenti cerca il comando Composer
+if (empty($config['COMPOSER_COMMAND'])) {
+    $composerCommand = findCommandPath('composer');
+    if ($composerCommand) {
+        echo "Composer command found at: $composerCommand\n";
+        if (askForConfirmation("Do you want to use this Composer command?")) {
+            $config['COMPOSER_COMMAND'] = $composerCommand;
+            saveLocalConfig($config);
+        } else {
+            die("Configuration aborted by user.\n");
+        }
+    } else {
+        echo "Composer command not found. Downloading composer.phar locally...\n";
+        $composerPharPath = downloadComposerPhar();
+        if ($composerPharPath) {
+            $config['COMPOSER_COMMAND'] = PHP_COMMAND . " " . $composerPharPath;
+            saveLocalConfig($config);
+            echo "Composer downloaded at: $composerPharPath\n";
+        } else {
+            die("Failed to download composer.phar. Please try again.\n");
+        }
+    }
+}
+
+
+// Utilizza i comandi confermati o configurati
+
+define('COMPOSER_COMMAND', $config['COMPOSER_COMMAND']);
 
 const LARAVEL_URL_DEFAULT = "http://localhost:8000";
 const VITE_URL_5176 = "http://localhost:5176";

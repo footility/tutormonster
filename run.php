@@ -1,9 +1,9 @@
 <?php
-
-//ATTENZIONE: gestione dell'avvio dello scipt
-require_once "config.php";
 //gestione funzioni comuni
 require_once "functions.php";
+//ATTENZIONE: gestione dell'avvio dello scipt
+require_once "config.php";
+
 
 /**
  * Luncher di tritalaravel per innescare il sistema operativo corretto
