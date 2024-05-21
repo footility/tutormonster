@@ -1,8 +1,17 @@
 <?php
 
-require_once 'configs/students.php';
+/*
+ * da eseguire in montessori nella home page con tutti gli studenti, dove si vedono anche gli esercizi
+ *
+Object.keys(obj.students).forEach(item => console.log(obj.students[item].github_user)) per trovare gli studenti
+const lista = [];
+    Object.keys(obj.students).forEach(item => {
+        lista.push(`"${obj.students[item].github_user}"`);
+    });
+    console.log(lista.join(",\n    "));
+ *
+ */
 
-define("STUDENTS_GITHUB", include 'configs/students.php');
 
 
 /**
@@ -28,13 +37,6 @@ const LOG_DIR = ROOT_DIR . DIRECTORY_SEPARATOR . "logs";
 const LOG_FILE = LOG_DIR . DIRECTORY_SEPARATOR . "tritalaravel.log";
 const TRITALARAVEL_ENV = CONFIG_DIR . DIRECTORY_SEPARATOR . ".env";
 const CLASS_PARTS = 2;
-
-
-
-// Utilizza i comandi confermati o configurati
-define('PHP_COMMAND', getPhpCommand());
-define('COMPOSER_COMMAND', getComposerCommand());
-
 const LARAVEL_URL_DEFAULT = "http://localhost:8000";
 const VITE_URL_5176 = "http://localhost:5176";
 const VITE_URL_5173 = "http://localhost:5173";
@@ -45,12 +47,31 @@ const VITE_URL_5174 = "http://localhost:5174";
 const STATIC_AIWAIT_SERVER_SECOND = 4;
 
 
-
 /**
  * CONFIGURAZIONI DELLE COSTANTI "DINAMICHE"
  * pre gestire valori usati in comune con i vari script
  * le scriviamo in maiuscole
  */
+
+// Controlla se il file students.php esiste
+if (!file_exists('configs/students.php')) {
+    logMessage("Il file 'configs/students.php' non esiste. Crealo e aggiungi l'elenco degli studenti con lo script apposito o manualmente.",LOG_ERR,true,"tritalaravel");
+    die();
+}
+
+$students = include 'configs/students.php';
+
+// Controlla se l'array degli studenti è vuoto
+if (empty($students)) {
+
+    logMessage("Errore: L'elenco degli studenti è vuoto. Aggiungi gli studenti nel file 'configs/students.php",LOG_ERR,true,"tritalaravel");
+    die();
+}
+
+define("STUDENTS_GITHUB", $students);
+// Utilizza i comandi confermati o configurati
+define('PHP_COMMAND', getPhpCommand());
+define('COMPOSER_COMMAND', getComposerCommand());
 
 // Determina la lunghezza dell'array e calcola il punto di divisione
 $STUDENT_COUNT = count(STUDENTS_GITHUB);
