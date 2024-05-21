@@ -26,19 +26,19 @@ TutorMonster è una suite di strumenti di automazione progettati per assistere i
 Per utilizzare lo script, assicurati di avere:
 - PHP compatibile con la versione di Laravel degli studenti.
 - MySQL per la gestione del database.
-- Composer per l'installazione di Laravel.
+- Composer per l'installazione di Laravel - Se non presente lo script lo caricherà per te.
 - npm (Node) per l'installazione e l'esecuzione di Vite.
 
 ### Utilizzo
 Per utilizzare lo script:
-- Modifica il codice per aggiornare la lista degli studenti e l'esercizio corrente.
-- Esegui con `php laravelscript.php`.
-- Se utilizzi diverse versioni di PHP, imposta il percorso corretto nel codice.
+- Modifica l'array degli studenti nelle config.
+- Esegui con `php run.php [repo-esercizio]`.
+- Segui le istruzioni in console.
 
 ### Problemi Noti
 - **Rimozione delle Repo Scaricate**: Problemi nel rimuovere completamente le directory scaricate a causa di file log bloccati.
-- **Esecuzione del Seeder**: Inconsistenze nell'esecuzione dei seeder, potenzialmente legate ai permessi di scrittura o alla struttura dei seeder degli studenti.
-- **Compatibilità con Windows**: Non testato su Windows, potrebbero sorgere problemi specifici di sistema operativo.
-
+- **Compatibilità con Windows**: Non implementato su Windows, potrebbero sorgere problemi specifici di sistema operativo.
+- **Compatibilità con Linux**: Non implementato su linux, potrebbero sorgere problemi specifici di sistema operativo.
+- 
 ### Contributi
 Sei invitato a contribuire allo sviluppo di questo strumento. Ogni suggerimento o miglioramento è ben accetto!
