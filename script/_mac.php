@@ -4,6 +4,7 @@
  * @return void
  */
 
+setupLoggingEnvironment();
 
 logMessage("Studenti totali $STUDENT_COUNT", LOG_INFO, true, "tritalaravel");
 
@@ -49,6 +50,8 @@ while (true) {
 
 
     foreach ($selectedStudents as $student) {
+
+        clearLog();
 
         logMessage("Pulizia Filesystem...", LOG_INFO, true, $student);
         CheckRepoStatus($student, true, true);

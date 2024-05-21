@@ -381,3 +381,24 @@ function getComposerCommand(){
 
     return $config['COMPOSER_COMMAND'];
 }
+
+
+function clearLog() {
+    if (file_exists(LOG_FILE)) {
+        unlink(LOG_FILE);  // Elimina il file di log
+    }
+}
+
+function setupLoggingEnvironment() {
+    if (!file_exists(LOG_DIR)) {
+        mkdir(LOG_DIR, 0777, true); // Crea la directory con permessi di lettura/scrittura/esecuzione
+        logMessage("Directory dei log creata.", LOG_INFO, true, "System");
+    }
+
+    if (file_exists(LOG_FILE)) {
+        unlink(LOG_FILE);  // Cancella il file di log esistente
+        logMessage("File di log precedente cancellato.", LOG_INFO, true, "System");
+    } else {
+        logMessage("File di log creato.", LOG_INFO, true, "System");
+    }
+}
