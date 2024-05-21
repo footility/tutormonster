@@ -132,10 +132,14 @@ function executeQuery($query, $database, $actor)
     // Esecuzione della query
     if ($conn->query($query) !== TRUE) {
         logMessage("Query fallita: " . $query, LOG_ERR, true, $actor);
+        // Chiusura della connessione
+        $conn->close();
+        return false;
     }
 
     // Chiusura della connessione
     $conn->close();
+    return true;
 }
 
 

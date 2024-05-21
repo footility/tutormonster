@@ -13,7 +13,6 @@ const lista = [];
  */
 
 
-
 /**
  * CONFIGURAZIONI DELLE COSTANTI "statiche"
  */
@@ -55,7 +54,7 @@ const STATIC_AIWAIT_SERVER_SECOND = 4;
 
 // Controlla se il file students.php esiste
 if (!file_exists('configs/students.php')) {
-    logMessage("Il file 'configs/students.php' non esiste. Crealo e aggiungi l'elenco degli studenti con lo script apposito o manualmente.",LOG_ERR,true,"tritalaravel");
+    logMessage("Il file 'configs/students.php' non esiste. Crealo e aggiungi l'elenco degli studenti con lo script apposito o manualmente.", LOG_ERR, true, "tritalaravel");
     die();
 }
 
@@ -64,7 +63,7 @@ $students = include 'configs/students.php';
 // Controlla se l'array degli studenti è vuoto
 if (empty($students)) {
 
-    logMessage("Errore: L'elenco degli studenti è vuoto. Aggiungi gli studenti nel file 'configs/students.php",LOG_ERR,true,"tritalaravel");
+    logMessage("Errore: L'elenco degli studenti è vuoto. Aggiungi gli studenti nel file 'configs/students.php", LOG_ERR, true, "tritalaravel");
     die();
 }
 

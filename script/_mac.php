@@ -119,7 +119,13 @@ while (true) {
 
                 run(PHP_COMMAND, "artisan storage:link", false, $student, false);
 
-                executeQuery($FAKE_USER_QUERY, DB_NAME, $student);
+                // Verifica se la tabella 'users' esiste
+                try {
+                    executeQuery($FAKE_USER_QUERY, DB_NAME, $student);
+                } catch (Exception $e) {
+                    logMessage($e->getMessage(), LOG_ERR, true, $student);
+                }
+
 
                 $routes = array_merge($routes, getLaravelRoutes($student));
 
