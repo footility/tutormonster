@@ -294,21 +294,22 @@ function askForConfirmation($message)
     return false;
 }
 
-// Funzione per salvare la configurazione localmente
+// Modifica la funzione per salvare la configurazione locale
 function saveLocalConfig($config)
 {
-    file_put_contents('local_config.json', json_encode($config));
+    file_put_contents('configs/local_config.json', json_encode($config));
 }
 
-// Funzione per caricare la configurazione locale
+// Modifica la funzione per caricare la configurazione locale
 function loadLocalConfig()
 {
-    if (file_exists('local_config.json')) {
-        return json_decode(file_get_contents('local_config.json'), true);
+    if (file_exists('configs/local_config.json')) {
+        return json_decode(file_get_contents('configs/local_config.json'), true);
     }
 
     return [];
 }
+
 
 // Funzione per scaricare composer.phar
 function downloadComposerPhar()

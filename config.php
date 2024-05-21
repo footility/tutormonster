@@ -1,5 +1,10 @@
 <?php
 
+require_once 'configs/students.php';
+
+define("STUDENTS_GITHUB", include 'configs/students.php');
+
+
 /**
  * CONFIGURAZIONI DELLE COSTANTI "statiche"
  */
@@ -39,56 +44,6 @@ const VITE_URL_5174 = "http://localhost:5174";
 //per non far arrabbiare laravel aspettiamo sia vite che laravel si avviino prima di aprire chrome
 const STATIC_AIWAIT_SERVER_SECOND = 4;
 
-/*
- *
- * da eseguire in montessori Object.keys(obj.students).forEach(item => console.log(obj.students[item].github_user)) per trovare gli studenti
-
-const lista = [];
-    Object.keys(obj.students).forEach(item => {
-        lista.push(`"${obj.students[item].github_user}"`);
-    });
-    console.log(lista.join(",\n    "));
- *
- */
-
-const STUDENTS_GITHUB = array(
-    "enrico-amerio",
-    "simoneaucello",
-    "NicolaBellini",
-    "dario-bennardino",
-    "EugenioCaiazz0",
-    "Matteo0421",
-    "AlessiaCiabatti",
-    "PatrizioCorcione",
-    "alessandrodamato",
-    "Daniele206",
-    "luigidibella",
-    "natdm02",
-    "Shinrael",
-    "davidefois96",
-    "SilvioGiacomelli",
-    "IlariaGuarnieri",
-    "juri931",
-    "Oltion-Koceku",
-    "JacopoLombardi",
-    "EmilianaManzo",
-    "marraguglielmo",
-    "marroccuandrea",
-    "stefanometallo",
-    "Alessandro-Moroni",
-    "Jomar-Navarro",
-    "saranazli",
-    "Benedettopana",
-    "davide-piarulli",
-    "BeatriceRocchi",
-    "MarcoRomanohub",
-    "AlessioRomano95",
-    "giorgia-rondinelli",
-    "ElenaRuscitto",
-    "Laroussi-Sarhane",
-    "Alex-Sibiriu",
-    "AnnaSpjut"
-);
 
 
 /**
