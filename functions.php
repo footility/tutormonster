@@ -267,10 +267,14 @@ function findCommandPath($command)
 {
     $output = [];
     $returnCode = 0;
-    exec("which $command", $output, $returnCode);
+    exec("which " . $command, $output, $returnCode);
 
     if ($returnCode == 0 && !empty($output)) {
-        return trim($output[0]);
+        $path = trim($output[0]);
+        // Rimuove eventuali comandi aggiuntivi come 'install'
+        $path = str_replace(' ', '\\ ', $path);
+        // Controlla se il path è valido ed eseguibile
+        return $path;
     }
 
     return null;
@@ -320,4 +324,60 @@ function downloadComposerPhar()
     }
 
     return $composerPharPath;
+}
+
+
+function getPhpCommand()
+{
+// Configurazioni iniziali
+    $config = loadLocalConfig();
+
+// Controlla se PHP è configurato, altrimenti cerca il comando PHP
+    if (empty($config['PHP_COMMAND'])) {
+        $phpCommand = findCommandPath('php');
+        if ($phpCommand) {
+            echo "PHP command found at: $phpCommand\n";
+            if (askForConfirmation("Do you want to use this PHP command?")) {
+                $config['PHP_COMMAND'] = $phpCommand;
+                saveLocalConfig($config);
+            } else {
+                die("Configuration aborted by user.\n");
+            }
+        } else {
+            die("PHP command not found. Please install PHP or specify its path manually.\n");
+        }
+    }
+
+    return $config['PHP_COMMAND'];
+}
+
+function getComposerCommand(){
+
+    $config = loadLocalConfig();
+
+    // Controlla se Composer è configurato, altrimenti cerca il comando Composer
+    if (empty($config['COMPOSER_COMMAND'])) {
+        $composerCommand = findCommandPath('composer');
+        if ($composerCommand) {
+            echo "Composer command found at: $composerCommand\n";
+            if (askForConfirmation("Do you want to use this Composer command?")) {
+                $config['COMPOSER_COMMAND'] = $composerCommand;
+                saveLocalConfig($config);
+            } else {
+                die("Configuration aborted by user.\n");
+            }
+        } else {
+            echo "Composer command not found. Downloading composer.phar locally...\n";
+            $composerPharPath = downloadComposerPhar();
+            if ($composerPharPath) {
+                $config['COMPOSER_COMMAND'] = PHP_COMMAND . " " . $composerPharPath;
+                saveLocalConfig($config);
+                echo "Composer downloaded at: $composerPharPath\n";
+            } else {
+                die("Failed to download composer.phar. Please try again.\n");
+            }
+        }
+    }
+
+    return $config['COMPOSER_COMMAND'];
 }
