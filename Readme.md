@@ -24,6 +24,31 @@ Lo script recupera le rotte configurate dal progetto dello studente e le stampa 
 
 Infine, la pulizia post-valutazione è essenziale per mantenere l'ambiente di lavoro pulito e pronto per il prossimo studente. Questo include la terminazione di tutti i processi avviati, l'eliminazione dei database creati e la rimozione dei file scaricati, assicurando che non vi siano residui che possano influenzare le valutazioni successive.
 
+### Configurazione
+
+1. Assicurati di configurare correttamente il file config.env. è sufficiente la porta di connessione al db, il nome del db può rimanere 'tritalaravel'
+2. Loggati in montessori
+3. Recati alla pagina di recap degli esercizi `/montessori-v2/classrooms/full-stack-developer-[numero classe]/teaching`
+1. Apri il network e trova il percorso dell'API `/montessori/api/v2/students/exercises-table-recap?classroom_slug=full-stack-developer-[numero della tua classe]`.
+2. Salva il payload della chiamata indicata precedentemente in una variabile `obj` all'interno della console.
+3. Esegui questo script nella console del browser:
+
+    ```javascript
+    Object.keys(obj.students).forEach(item => console.log(obj.students[item].github_user))
+    const lista = [];
+    Object.keys(obj.students).forEach(item => {
+        lista.push(`"${obj.students[item].github_user}"`);
+    });
+    console.log(lista.join(",\n    "));
+    ```
+
+4. Copia e incolla l'elenco degli user-github dei tuoi studenti dentro il file `students.php` sotto forma di array:
+    ```php
+    return [
+        // Incolla qui l'elenco degli user-github
+    ];
+    ```
+   
 ### Modalità di Uso
 
 Lo script offre diverse modalità d'uso per facilitare la selezione e la valutazione degli studenti:
@@ -52,6 +77,18 @@ Per utilizzare lo script, assicurati di avere:
 - **Rimozione delle Repo Scaricate**: Problemi nel rimuovere completamente le directory scaricate a causa di file log bloccati.
 - **Compatibilità con Windows**: Non implementato su Windows, potrebbero sorgere problemi specifici di sistema operativo.
 - **Compatibilità con Linux**: Non implementato su linux, potrebbero sorgere problemi specifici di sistema operativo.
-- 
-### Contributi
+
+### Come contribuire
+
 Sei invitato a contribuire allo sviluppo di questo strumento. Ogni suggerimento o miglioramento è ben accetto!
+
+Al momento lo script si lancia attraverso il singolo file `run.php`, che seleziona lo script effettivo in base al sistema operativo:
+
+1. `_linux.php`
+2. `_mac.php`
+3. `_windows.php`
+
+Attualmente, soltanto il file `_mac.php` contiene "l'algoritmo" dello script. Se vuoi contribuire per Windows o per Linux, copia tutto il contenuto dello script per macOS nel file corrispondente al tuo sistema operativo e apporta le modifiche necessarie per risolvere eventuali errori specifici del tuo sistema operativo.
+
+Quando comprenderemo le differenze tra i sistemi operativi, potremo migliorare ulteriormente la compatibilità e l'usabilità dello script e unificheremo la procedura in un singolo file.
+

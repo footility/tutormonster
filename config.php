@@ -1,18 +1,5 @@
 <?php
 
-/*
- * da eseguire in montessori nella home page con tutti gli studenti, dove si vedono anche gli esercizi
- *
-Object.keys(obj.students).forEach(item => console.log(obj.students[item].github_user)) per trovare gli studenti
-const lista = [];
-    Object.keys(obj.students).forEach(item => {
-        lista.push(`"${obj.students[item].github_user}"`);
-    });
-    console.log(lista.join(",\n    "));
- *
- */
-
-
 /**
  * CONFIGURAZIONI DELLE COSTANTI "statiche"
  */
@@ -52,11 +39,40 @@ const STATIC_AIWAIT_SERVER_SECOND = 4;
  * le scriviamo in maiuscole
  */
 
+
 // Controlla se il file students.php esiste
 if (!file_exists('configs/students.php')) {
     logMessage("Il file 'configs/students.php' non esiste. Crealo e aggiungi l'elenco degli studenti con lo script apposito o manualmente.", LOG_ERR, true, "tritalaravel");
     die();
 }
+
+/*
+ * ### Configurazione
+ *
+ * 1. Assicurati di configurare correttamente il file config.env. È sufficiente la porta di connessione al DB, il nome del DB può rimanere 'tritalaravel'.
+ * 2. Loggati in Montessori.
+ * 3. Recati alla pagina di recap degli esercizi `/montessori-v2/classrooms/full-stack-developer-[numero classe]/teaching`.
+ * 4. Apri il network e trova il percorso dell'API `/montessori/api/v2/students/exercises-table-recap?classroom_slug=full-stack-developer-[numero della tua classe]`.
+ * 5. Salva il payload della chiamata indicata precedentemente in una variabile `obj` all'interno della console.
+ * 6. Esegui questo script nella console del browser:
+ *
+  //javascript
+  Object.keys(obj.students).forEach(item => console.log(obj.students[item].github_user))
+  const lista = [];
+  Object.keys(obj.students).forEach(item => {
+      lista.push(`"${obj.students[item].github_user}"`);
+  });
+  console.log(lista.join(",\n    "));
+ *
+ *
+ * 7. Copia e incolla l'elenco degli user-github dei tuoi studenti dentro il file `students.php` (da creare manualmente) sotto forma di array php:
+
+ //php
+ return [
+     // Incolla qui l'elenco degli user-github
+ ];
+ *
+ */
 
 $students = include 'configs/students.php';
 
