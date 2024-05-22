@@ -26,7 +26,7 @@ Infine, la pulizia post-valutazione è essenziale per mantenere l'ambiente di la
 
 ### Configurazione
 
-1. Assicurati di configurare correttamente il file config.env. è sufficiente la porta di connessione al db, il nome del db può rimanere 'tritalaravel'
+1. Assicurati di configurare correttamente il file `configs/.env` è sufficiente la porta di connessione al db, il nome del db può rimanere 'tritalaravel'
 2. Loggati in montessori
 3. Recati alla pagina di recap degli esercizi `/montessori-v2/classrooms/full-stack-developer-[numero classe]/teaching`
 1. Apri il network e trova il percorso dell'API `/montessori/api/v2/students/exercises-table-recap?classroom_slug=full-stack-developer-[numero della tua classe]`.
@@ -42,7 +42,7 @@ Infine, la pulizia post-valutazione è essenziale per mantenere l'ambiente di la
     console.log(lista.join(",\n    "));
     ```
 
-4. Copia e incolla l'elenco degli user-github dei tuoi studenti dentro il file `students.php` sotto forma di array:
+4. Copia e incolla l'elenco degli user-github dei tuoi studenti dentro il file `configs/students.php` sotto forma di array:
     ```php
     return [
         // Incolla qui l'elenco degli user-github
